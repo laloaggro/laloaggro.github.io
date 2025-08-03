@@ -722,15 +722,6 @@
         </div>
         
         <div id="content">
-            <div class="output">
-                <div>Bienvenido a la Terminal de Historia de la Programación v1.0</div>
-                <div>Escribe "hoy" para ver el hecho de programación del día</div>
-                <div>Escribe "aleatorio" para ver un hecho de programación aleatorio</div>
-                <div>Escribe "catalogo" para ver ideas de proyectos</div>
-                <div>Escribe "hechos" para buscar en todos los hechos disponibles</div>
-                <div>Escribe "ayuda" para ver todos los comandos disponibles</div>
-                <div>Escribe "modo" para cambiar entre modo oscuro/claro</div>
-            </div>
             <div class="output" id="monthly-fact-container">
                 <div class="fact-title">Hecho del Mes</div>
                 <div id="monthly-fact-content"></div>
@@ -879,6 +870,7 @@
             showToday();
             showMonthlyFact();
             applySavedTheme();
+            ensureWelcomeMessage();
         };
 
         // Manejar entrada de comandos
@@ -995,12 +987,16 @@
                 `;
                 contentDiv.appendChild(noFactElement);
             }
+            
+            // Asegurarse de que el mensaje de bienvenida esté presente
+            ensureWelcomeMessage();
         }
 
         // Mostrar un hecho aleatorio
         function showRandom() {
             const randomIndex = Math.floor(Math.random() * facts.length);
             displayFact(facts[randomIndex]);
+            ensureWelcomeMessage();
         }
 
         // Mostrar un hecho con botones de compartir
@@ -1091,6 +1087,8 @@
                     searchFacts();
                 }
             });
+            
+            ensureWelcomeMessage();
         }
         
         // Generar lista de hechos
@@ -1142,6 +1140,7 @@
             errorElement.className = 'output';
             errorElement.innerHTML = `Comando no encontrado: ${command}. Escribe 'ayuda' para ver los comandos disponibles.`;
             contentDiv.appendChild(errorElement);
+            ensureWelcomeMessage();
         }
         
         // Mostrar catálogo de ideas de proyectos
@@ -1493,19 +1492,27 @@
                 }
             });
             
-            // Agregar mensaje de bienvenida
-            const welcomeElement = document.createElement('div');
-            welcomeElement.className = 'output';
-            welcomeElement.innerHTML = `
-                <div>Bienvenido a la Terminal de Historia de la Programación v1.0</div>
-                <div>Escribe "hoy" para ver el hecho de programación del día</div>
-                <div>Escribe "aleatorio" para ver un hecho de programación aleatorio</div>
-                <div>Escribe "catalogo" para ver ideas de proyectos</div>
-                <div>Escribe "hechos" para buscar en todos los hechos disponibles</div>
-                <div>Escribe "ayuda" para ver todos los comandos disponibles</div>
-                <div>Escribe "modo" para cambiar entre modo oscuro/claro</div>
-            `;
-            contentDiv.insertBefore(welcomeElement, contentDiv.firstChild);
+            // Verificar si el mensaje de bienvenida ya existe
+            const welcomeExists = Array.from(contentDiv.children).some(child => 
+                child.classList.contains('output') && 
+                child.textContent.includes('Bienvenido a la Terminal de Historia de la Programación')
+            );
+            
+            // Agregar mensaje de bienvenida solo si no existe
+            if (!welcomeExists) {
+                const welcomeElement = document.createElement('div');
+                welcomeElement.className = 'output';
+                welcomeElement.innerHTML = `
+                    <div>Bienvenido a la Terminal de Historia de la Programación v1.0</div>
+                    <div>Escribe "hoy" para ver el hecho de programación del día</div>
+                    <div>Escribe "aleatorio" para ver un hecho de programación aleatorio</div>
+                    <div>Escribe "catalogo" para ver ideas de proyectos</div>
+                    <div>Escribe "hechos" para buscar en todos los hechos disponibles</div>
+                    <div>Escribe "ayuda" para ver todos los comandos disponibles</div>
+                    <div>Escribe "modo" para cambiar entre modo oscuro/claro</div>
+                `;
+                contentDiv.insertBefore(welcomeElement, contentDiv.firstChild);
+            }
         }
         
         // Función para cambiar entre modo oscuro y claro
@@ -1566,6 +1573,31 @@
                 monthlyFactContent.innerHTML = `
                     <div class="fact-content">No hay hechos registrados para este mes.</div>
                 `;
+            }
+        }
+        
+        // Función para asegurar que el mensaje de bienvenida esté presente
+        function ensureWelcomeMessage() {
+            // Verificar si el mensaje de bienvenida ya existe
+            const welcomeExists = Array.from(contentDiv.children).some(child => 
+                child.classList.contains('output') && 
+                child.textContent.includes('Bienvenido a la Terminal de Historia de la Programación')
+            );
+            
+            // Agregar mensaje de bienvenida solo si no existe
+            if (!welcomeExists) {
+                const welcomeElement = document.createElement('div');
+                welcomeElement.className = 'output';
+                welcomeElement.innerHTML = `
+                    <div>Bienvenido a la Terminal de Historia de la Programación v1.0</div>
+                    <div>Escribe "hoy" para ver el hecho de programación del día</div>
+                    <div>Escribe "aleatorio" para ver un hecho de programación aleatorio</div>
+                    <div>Escribe "catalogo" para ver ideas de proyectos</div>
+                    <div>Escribe "hechos" para buscar en todos los hechos disponibles</div>
+                    <div>Escribe "ayuda" para ver todos los comandos disponibles</div>
+                    <div>Escribe "modo" para cambiar entre modo oscuro/claro</div>
+                `;
+                contentDiv.insertBefore(welcomeElement, contentDiv.firstChild);
             }
         }
         
