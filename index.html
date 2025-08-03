@@ -999,11 +999,23 @@
             ensureWelcomeMessage();
         }
 
-        // Mostrar un hecho con botones de compartir
+        // Función para crear elementos HTML de manera más eficiente
+        function createElement(tag, className, content) {
+            const element = document.createElement(tag);
+            if (className) element.className = className;
+            if (content) {
+                if (typeof content === 'string') {
+                    element.innerHTML = content;
+                } else if (content instanceof HTMLElement) {
+                    element.appendChild(content);
+                }
+            }
+            return element;
+        }
+        
+        // Función para mostrar un hecho con botones de compartir
         function displayFact(fact) {
-            const factElement = document.createElement('div');
-            factElement.className = 'output';
-            factElement.innerHTML = `
+            const factElement = createElement('div', 'output', `
                 <div class="fact-title">${fact.title}</div>
                 <div class="fact-date">${fact.date}</div>
                 <div class="fact-content">${fact.content}</div>
@@ -1012,7 +1024,7 @@
                     <button class="share-button" onclick="shareToX('${fact.title}', '${fact.date}', '${fact.content}')">Compartir en X</button>
                     <button class="share-button" onclick="shareByEmail('${fact.title}', '${fact.date}', '${fact.content}')">Compartir por Email</button>
                 </div>
-            `;
+            `);
             contentDiv.appendChild(factElement);
         }
         
@@ -1105,33 +1117,45 @@
             const searchTerm = document.getElementById('facts-search').value.toLowerCase();
             const factsListDiv = document.getElementById('facts-list');
             
+            // Usar fragment para mejor rendimiento
+            const fragment = document.createDocumentFragment();
+            
             if (searchTerm === '') {
-                factsListDiv.innerHTML = generateFactsList();
-                return;
+                facts.forEach(fact => {
+                    const factItem = createElement('div', 'fact-item', `&nbsp;&nbsp;${fact.date} - ${fact.title}`);
+                    fragment.appendChild(factItem);
+                });
+            } else {
+                const filteredFacts = facts.filter(fact => 
+                    fact.title.toLowerCase().includes(searchTerm) || 
+                    fact.date.toLowerCase().includes(searchTerm) ||
+                    fact.content.toLowerCase().includes(searchTerm)
+                );
+                
+                if (filteredFacts.length === 0) {
+                    const noResults = createElement('div', 'fact-item', 'No se encontraron hechos que coincidan con la búsqueda.');
+                    fragment.appendChild(noResults);
+                } else {
+                    filteredFacts.forEach(fact => {
+                        const factItem = createElement('div', 'fact-item', `&nbsp;&nbsp;${fact.date} - ${fact.title}`);
+                        fragment.appendChild(factItem);
+                    });
+                }
             }
             
-            const filteredFacts = facts.filter(fact => 
-                fact.title.toLowerCase().includes(searchTerm) || 
-                fact.date.toLowerCase().includes(searchTerm) ||
-                fact.content.toLowerCase().includes(searchTerm)
-            );
-            
-            if (filteredFacts.length === 0) {
-                factsListDiv.innerHTML = '<div class="fact-item">No se encontraron hechos que coincidan con la búsqueda.</div>';
-                return;
-            }
-            
-            let filteredFactsList = '';
-            filteredFacts.forEach(fact => {
-                filteredFactsList += `<div class="fact-item">&nbsp;&nbsp;${fact.date} - ${fact.title}</div>`;
-            });
-            
-            factsListDiv.innerHTML = filteredFactsList;
+            // Limpiar y actualizar la lista
+            factsListDiv.innerHTML = '';
+            factsListDiv.appendChild(fragment);
         }
         
-        // Limpiar terminal
+        // Limpiar terminal de manera eficiente
         function clearTerminal() {
-            contentDiv.innerHTML = '';
+            const outputMessages = contentDiv.querySelectorAll('.output');
+            outputMessages.forEach(message => {
+                if (message.id !== 'monthly-fact-container') {
+                    message.remove();
+                }
+            });
         }
 
         // Mostrar mensaje de comando desconocido
@@ -1485,34 +1509,10 @@
             }
             
             // Limpiar todos los mensajes excepto el hecho del mes
-            const outputMessages = contentDiv.querySelectorAll('.output');
-            outputMessages.forEach(message => {
-                if (message.id !== 'monthly-fact-container') {
-                    message.remove();
-                }
-            });
+            clearTerminal();
             
-            // Verificar si el mensaje de bienvenida ya existe
-            const welcomeExists = Array.from(contentDiv.children).some(child => 
-                child.classList.contains('output') && 
-                child.textContent.includes('Bienvenido a la Terminal de Historia de la Programación')
-            );
-            
-            // Agregar mensaje de bienvenida solo si no existe
-            if (!welcomeExists) {
-                const welcomeElement = document.createElement('div');
-                welcomeElement.className = 'output';
-                welcomeElement.innerHTML = `
-                    <div>Bienvenido a la Terminal de Historia de la Programación v1.0</div>
-                    <div>Escribe "hoy" para ver el hecho de programación del día</div>
-                    <div>Escribe "aleatorio" para ver un hecho de programación aleatorio</div>
-                    <div>Escribe "catalogo" para ver ideas de proyectos</div>
-                    <div>Escribe "hechos" para buscar en todos los hechos disponibles</div>
-                    <div>Escribe "ayuda" para ver todos los comandos disponibles</div>
-                    <div>Escribe "modo" para cambiar entre modo oscuro/claro</div>
-                `;
-                contentDiv.insertBefore(welcomeElement, contentDiv.firstChild);
-            }
+            // Asegurar que el mensaje de bienvenida esté presente
+            ensureWelcomeMessage();
         }
         
         // Función para cambiar entre modo oscuro y claro
@@ -1548,30 +1548,41 @@
         
         // Función para mostrar el "Hecho del Mes"
         function showMonthlyFact() {
-            // Obtener el mes actual
-            const now = new Date();
-            const currentMonth = now.getMonth();
-            
-            // Filtrar hechos por mes
-            const monthlyFacts = facts.filter(fact => {
-                const factMonth = fact.date.split(' ')[2]; // Obtener el nombre del mes
-                const months = [
-                    "enero", "febrero", "marzo", "abril", "mayo", "junio",
-                    "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
-                ];
-                return months[currentMonth] === factMonth;
-            });
-            
-            // Seleccionar un hecho aleatorio del mes
-            if (monthlyFacts.length > 0) {
-                const randomFact = monthlyFacts[Math.floor(Math.random() * monthlyFacts.length)];
+            try {
+                // Obtener el mes actual
+                const now = new Date();
+                const currentMonth = now.getMonth();
+                
+                // Filtrar hechos por mes
+                const monthlyFacts = facts.filter(fact => {
+                    try {
+                        const factMonth = fact.date.split(' ')[2]; // Obtener el nombre del mes
+                        const months = [
+                            "enero", "febrero", "marzo", "abril", "mayo", "junio",
+                            "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+                        ];
+                        return months[currentMonth] === factMonth;
+                    } catch (e) {
+                        return false;
+                    }
+                });
+                
+                // Seleccionar un hecho aleatorio del mes
+                if (monthlyFacts.length > 0) {
+                    const randomFact = monthlyFacts[Math.floor(Math.random() * monthlyFacts.length)];
+                    monthlyFactContent.innerHTML = `
+                        <div class="fact-date">${randomFact.date}</div>
+                        <div class="fact-content">${randomFact.title}: ${randomFact.content}</div>
+                    `;
+                } else {
+                    monthlyFactContent.innerHTML = `
+                        <div class="fact-content">No hay hechos registrados para este mes.</div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error al mostrar el hecho del mes:', error);
                 monthlyFactContent.innerHTML = `
-                    <div class="fact-date">${randomFact.date}</div>
-                    <div class="fact-content">${randomFact.title}: ${randomFact.content}</div>
-                `;
-            } else {
-                monthlyFactContent.innerHTML = `
-                    <div class="fact-content">No hay hechos registrados para este mes.</div>
+                    <div class="fact-content">Error al cargar el hecho del mes.</div>
                 `;
             }
         }
