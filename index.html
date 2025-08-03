@@ -328,34 +328,37 @@
         function showToday() {
             const now = new Date();
             
-            // Obtener el día sin cero inicial
+            // Formatear el día para que coincida con los datos (agregar "de" entre el día y el mes)
             const day = now.getDate();
-            
-            // Array de meses en español
             const months = [
                 "enero", "febrero", "marzo", "abril", "mayo", "junio",
                 "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
             ];
             const month = months[now.getMonth()];
-            
-            // Formatear la fecha sin cero inicial para el día
             const formattedDate = day + " de " + month;
             
-            // Buscar el hecho correspondiente
-            let fact = null;
+            // Buscar el hecho del día actual
+            let foundFact = null;
             for (let i = 0; i < facts.length; i++) {
                 if (facts[i].date === formattedDate) {
-                    fact = facts[i];
+                    foundFact = facts[i];
                     break;
                 }
             }
             
-            if (fact) {
-                displayFact(fact);
+            // Si encontramos un hecho para hoy, lo mostramos
+            if (foundFact) {
+                displayFact(foundFact);
             } else {
-                // Si no hay hecho para hoy, mostrar uno aleatorio
-                const randomIndex = Math.floor(Math.random() * facts.length);
-                displayFact(facts[randomIndex]);
+                // Si no hay hecho para hoy, mostramos un mensaje especial
+                const noFactElement = document.createElement('div');
+                noFactElement.className = 'output';
+                noFactElement.innerHTML = `
+                    <div class="fact-title">Sin hecho para hoy</div>
+                    <div class="fact-date">${formattedDate}</div>
+                    <div class="fact-content">No tenemos registrado un hecho importante de la historia de la programación para el día de hoy. ¡Puedes ayudarnos contribuyendo con información!</div>
+                `;
+                contentDiv.appendChild(noFactElement);
             }
         }
 
