@@ -125,6 +125,9 @@
             margin-top: 15px;
             padding-top: 15px;
             border-top: 1px dashed rgba(0, 255, 0, 0.3);
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
         }
         
         .share-button {
@@ -135,8 +138,10 @@
             padding: 8px 15px;
             cursor: pointer;
             font-family: 'Courier New', monospace;
-            font-size: 1em;
+            font-size: 0.9em;
             transition: all 0.3s ease;
+            flex: 1;
+            min-width: 120px;
         }
         
         .share-button:hover {
@@ -698,6 +703,8 @@
                 <div class="fact-content">${fact.content}</div>
                 <div class="fact-actions">
                     <button class="share-button" onclick="shareFact('${fact.title}', '${fact.date}', '${fact.content}')">Compartir</button>
+                    <button class="share-button" onclick="shareToX('${fact.title}', '${fact.date}', '${fact.content}')">Compartir en X</button>
+                    <button class="share-button" onclick="shareByEmail('${fact.title}', '${fact.date}', '${fact.content}')">Compartir por Email</button>
                 </div>
             `;
             contentDiv.appendChild(factElement);
@@ -730,6 +737,25 @@
                 // Desplazarse hacia abajo
                 contentDiv.parentElement.scrollTop = contentDiv.parentElement.scrollHeight;
             }
+        }
+        
+        // Función para compartir en X (Twitter)
+        function shareToX(title, date, content) {
+            const textToShare = `Hecho de programación: ${title} (${date})\n\n${content}\n\n#Programacion #Historia #Tech`;
+            const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(textToShare)}`;
+            
+            // Abrir en una nueva ventana
+            window.open(url, '_blank', 'width=600,height=400');
+        }
+        
+        // Función para compartir por email
+        function shareByEmail(title, date, content) {
+            const subject = `Hecho de programación: ${title} (${date})`;
+            const body = `${content}\n\nDescubre más hechos históricos en: ${window.location.href}`;
+            const url = `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            
+            // Abrir cliente de email
+            window.location.href = url;
         }
         
         // Mostrar todos los hechos con funcionalidad de búsqueda
