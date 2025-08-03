@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal de Historia de la Programación</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.4;
+        }
+        
+        #terminal {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #00ff00;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+            height: 80vh;
+            overflow-y: auto;
+        }
+        
+        #header {
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #00ff00;
+            padding-bottom: 10px;
+        }
+        
+        #content {
+            min-height: 300px;
+        }
+        
+        #prompt {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        #prompt span {
+            margin-right: 10px;
+        }
+        
+        #command-input {
+            background: transparent;
+            border: none;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 1em;
+            width: calc(100% - 30px);
+            outline: none;
+        }
+        
+        .command {
+            color: #00ff00;
+        }
+        
+        .output {
+            margin: 10px 0;
+        }
+        
+        .fact-title {
+            color: #00ff00;
+            font-weight: bold;
+            margin: 15px 0 5px 0;
+        }
+        
+        .fact-date {
+            color: #ffff00;
+        }
+        
+        .fact-content {
+            margin: 10px 0;
+        }
+        
+        .blink {
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #00ff00;
+        }
+    </style>
+</head>
+<body>
+    <div id="terminal">
+        <div id="header">
+            <h1>Terminal de Historia de la Programación</h1>
+            <p>Escribe "ayuda" para ver los comandos disponibles</p>
+        </div>
+        <div id="content">
+            <div class="output">
+                <div>Bienvenido a la Terminal de Historia de la Programación v1.0</div>
+                <div>Escribe "hoy" para ver el hecho de programación del día</div>
+                <div>Escribe "aleatorio" para ver un hecho de programación aleatorio</div>
+                <div>Escribe "ayuda" para ver todos los comandos disponibles</div>
+            </div>
+        </div>
+        <div id="prompt">
+            <span>&gt;</span>
+            <input type="text" id="command-input" autofocus>
+            <span class="blink">_</span>
+        </div>
+    </div>
+
+    <script>
+        // Base de datos de hechos de programación
+        const facts = [
+            {
+                date: "1 de enero",
+                title: "Primer error informático",
+                content: "En 1947, los ingenieros encontraron el primer error real en una computadora: una polilla atrapada en un relé de la computadora Harvard Mark II. De aquí proviene el término 'bug' en informática."
+            },
+            {
+                date: "7 de enero",
+                title: "Creación de COBOL",
+                content: "En 1959, Grace Hopper ayudó a crear COBOL, un lenguaje de programación diseñado para ser legible y autodocumentado para aplicaciones empresariales."
+            },
+            {
+                date: "15 de febrero",
+                title: "Ada Lovelace",
+                content: "Considerada la primera programadora del mundo, Ada Lovelace escribió el primer algoritmo destinado a ser procesado por la Máquina Analítica de Charles Babbage en 1843."
+            },
+            {
+                date: "1 de marzo",
+                title: "Creación de JavaScript",
+                content: "En 1995, Brendan Eich creó JavaScript en solo 10 días mientras trabajaba en Netscape. Se convirtió en uno de los lenguajes de programación más utilizados."
+            },
+            {
+                date: "1 de abril",
+                title: "RFC del Día de los Inocentes",
+                content: "El primero de abril es conocido por RFCs (Request for Comments) que son bromas, como el RFC 7919 que define el algoritmo de 'Recolección de Basura Infinita'."
+            },
+            {
+                date: "22 de mayo",
+                title: "Lanzamiento de Java",
+                content: "Java 1.0 fue lanzado por Sun Microsystems en 1995. El lenguaje originalmente se llamaba Oak antes de ser renombrado a Java."
+            },
+            {
+                date: "14 de junio",
+                title: "Creación de Python",
+                content: "Guido van Rossum lanzó Python al público en 1991. Lo nombró en honor al grupo de comedia británico Monty Python."
+            },
+            {
+                date: "20 de julio",
+                title: "Computadora de Guía Apollo",
+                content: "En 1969, la Computadora de Guía Apollo que ayudó a aterrizar humanos en la luna fue programada por un equipo liderado por Margaret Hamilton, pionera en conceptos de ingeniería de software."
+            },
+            {
+                date: "1 de agosto",
+                title: "Cumpleaños de Linux",
+                content: "El 25 de agosto de 1991, Linus Torvalds anunció la primera versión de Linux, un kernel de sistema operativo gratuito tipo Unix."
+            },
+            {
+                date: "27 de septiembre",
+                title: "World Wide Web",
+                content: "En 1991, Tim Berners-Lee publicó el primer sitio web, marcando el comienzo de la World Wide Web como la conocemos."
+            },
+            {
+                date: "2 de octubre",
+                title: "Lenguaje de programación C",
+                content: "Dennis Ritchie completó el desarrollo del lenguaje de programación C en los Laboratorios Bell en 1972. C se convirtió en la base para muchos lenguajes de programación modernos."
+            },
+            {
+                date: "21 de noviembre",
+                title: "Hito de Fortran",
+                content: "En 1957, IBM lanzó Fortran, el primer lenguaje de programación de alto nivel ampliamente utilizado, que significa Formula Translation."
+            },
+            {
+                date: "9 de diciembre",
+                title: "Primera conexión ARPANET",
+                content: "En 1969, se envió el primer mensaje a través de ARPANET, el precursor de Internet moderno, entre UCLA y el Instituto de Investigación de Stanford."
+            },
+            {
+                date: "12 de diciembre",
+                title: "Lanzamiento de Perl",
+                content: "En 1987, Larry Wall lanzó Perl, un lenguaje de programación de alto nivel conocido por su potencia en procesamiento de texto y expresiones regulares."
+            }
+        ];
+
+        // Elementos DOM
+        const contentDiv = document.getElementById('content');
+        const commandInput = document.getElementById('command-input');
+
+        // Inicializar
+        window.onload = function() {
+            commandInput.focus();
+            showToday();
+        };
+
+        // Manejar entrada de comandos
+        commandInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                const command = commandInput.value.trim().toLowerCase();
+                processCommand(command);
+                commandInput.value = '';
+            }
+        });
+
+        // Procesar comandos del usuario
+        function processCommand(command) {
+            // Mostrar el comando
+            const commandElement = document.createElement('div');
+            commandElement.className = 'command';
+            commandElement.innerHTML = `&gt; ${command}`;
+            contentDiv.appendChild(commandElement);
+
+            // Procesar comando
+            switch(command) {
+                case 'ayuda':
+                    showHelp();
+                    break;
+                case 'hoy':
+                    showToday();
+                    break;
+                case 'aleatorio':
+                    showRandom();
+                    break;
+                case 'limpiar':
+                    clearTerminal();
+                    break;
+                case 'hechos':
+                    showAllFacts();
+                    break;
+                case '':
+                    // No hacer nada para comandos vacíos
+                    break;
+                default:
+                    showUnknownCommand(command);
+            }
+
+            // Desplazarse hacia abajo
+            contentDiv.parentElement.scrollTop = contentDiv.parentElement.scrollHeight;
+        }
+
+        // Mostrar información de ayuda
+        function showHelp() {
+            const helpElement = document.createElement('div');
+            helpElement.className = 'output';
+            helpElement.innerHTML = `
+                <div>Comandos disponibles:</div>
+                <div>&nbsp;&nbsp;ayuda&nbsp;&nbsp;&nbsp;&nbsp;- Mostrar este mensaje de ayuda</div>
+                <div>&nbsp;&nbsp;hoy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Mostrar el hecho de programación de hoy</div>
+                <div>&nbsp;&nbsp;aleatorio&nbsp;- Mostrar un hecho de programación aleatorio</div>
+                <div>&nbsp;&nbsp;hechos&nbsp;&nbsp;&nbsp;- Listar todos los hechos disponibles</div>
+                <div>&nbsp;&nbsp;limpiar&nbsp;&nbsp;- Limpiar la pantalla de la terminal</div>
+            `;
+            contentDiv.appendChild(helpElement);
+        }
+
+        // Mostrar el hecho de hoy
+        function showToday() {
+            const now = new Date();
+            const today = now.toLocaleString('es-ES', { day: 'numeric', month: 'long' });
+            
+            // Intentar encontrar un hecho para hoy
+            const fact = facts.find(f => f.date.toLowerCase() === today.toLowerCase());
+            
+            if (fact) {
+                displayFact(fact);
+            } else {
+                // Si no hay hecho para hoy, mostrar uno aleatorio
+                const randomIndex = Math.floor(Math.random() * facts.length);
+                displayFact(facts[randomIndex]);
+            }
+        }
+
+        // Mostrar un hecho aleatorio
+        function showRandom() {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            displayFact(facts[randomIndex]);
+        }
+
+        // Mostrar un hecho
+        function displayFact(fact) {
+            const factElement = document.createElement('div');
+            factElement.className = 'output';
+            factElement.innerHTML = `
+                <div class="fact-title">${fact.title}</div>
+                <div class="fact-date">${fact.date}</div>
+                <div class="fact-content">${fact.content}</div>
+            `;
+            contentDiv.appendChild(factElement);
+        }
+
+        // Mostrar todos los hechos
+        function showAllFacts() {
+            const factsElement = document.createElement('div');
+            factsElement.className = 'output';
+            factsElement.innerHTML = '<div>Todos los hechos de programación disponibles:</div>';
+            
+            facts.forEach(fact => {
+                const factItem = document.createElement('div');
+                factItem.innerHTML = `<div>&nbsp;&nbsp;${fact.date} - ${fact.title}</div>`;
+                factsElement.appendChild(factItem);
+            });
+            
+            contentDiv.appendChild(factsElement);
+        }
+
+        // Limpiar terminal
+        function clearTerminal() {
+            contentDiv.innerHTML = '';
+        }
+
+        // Mostrar mensaje de comando desconocido
+        function showUnknownCommand(command) {
+            const errorElement = document.createElement('div');
+            errorElement.className = 'output';
+            errorElement.innerHTML = `Comando no encontrado: ${command}. Escribe 'ayuda' para ver los comandos disponibles.`;
+            contentDiv.appendChild(errorElement);
+        }
+    </script>
+</body>
+</html>

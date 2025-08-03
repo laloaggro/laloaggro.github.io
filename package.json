@@ -1,0 +1,16 @@
+{
+  "name": "programming-history-terminal",
+  "version": "1.0.0",
+  "description": "A terminal-style website that displays daily programming facts",
+  "main": "index.html",
+  "scripts": {
+    "start": "http-server -o",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["programming", "terminal", "history", "facts"],
+  "author": "laloaggro",
+  "license": "MIT",
+  "dependencies": {
+    "http-server": "^14.1.1"
+  }
+}
