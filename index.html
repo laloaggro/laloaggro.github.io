@@ -11,7 +11,7 @@
             font-family: 'Courier New', monospace;
             margin: 0;
             padding: 20px;
-            line-height: 1.4;
+            line-height: 1.6;
             position: relative;
             overflow: hidden;
         }
@@ -351,6 +351,23 @@
         .category-item {
             cursor: pointer;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .category-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .category-item:hover::before {
+            left: 100%;
         }
         
         .category-item:hover {
@@ -425,25 +442,45 @@
             margin-bottom: 20px;
             padding: 10px 0;
             border-bottom: 1px solid #008800;
+            position: relative;
         }
         
         .nav-links {
             display: flex;
             gap: 15px;
+            flex-wrap: wrap;
         }
         
         .nav-link {
             color: #00ff00;
             text-decoration: none;
-            padding: 5px 10px;
+            padding: 8px 15px;
             border: 1px solid #008800;
             border-radius: 5px;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .nav-link:hover::before {
+            left: 100%;
         }
         
         .nav-link:hover {
             background-color: rgba(0, 80, 0, 0.5);
             box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+            transform: translateY(-2px);
         }
         
         .back-button {
@@ -456,17 +493,218 @@
             font-family: 'Courier New', monospace;
             font-size: 1em;
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .back-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 0, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .back-button:hover::before {
+            left: 100%;
         }
         
         .back-button:hover {
             background-color: rgba(0, 80, 0, 0.9);
             box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        /* Modo claro */
+        body.light-mode {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        
+        body.light-mode #terminal {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-color: #333;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        body.light-mode #header {
+            border-bottom-color: #333;
+        }
+        
+        body.light-mode #header h1 {
+            color: #333;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        body.light-mode .nav-link {
+            color: #333;
+            border-color: #333;
+        }
+        
+        body.light-mode .nav-link:hover {
+            background-color: rgba(200, 200, 200, 0.5);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        body.light-mode .back-button {
+            color: #333;
+            border-color: #333;
+            background-color: rgba(200, 200, 200, 0.5);
+        }
+        
+        body.light-mode .back-button:hover {
+            background-color: rgba(180, 180, 180, 0.7);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        body.light-mode .output {
+            background-color: rgba(240, 240, 240, 0.7);
+            border-left-color: #666;
+        }
+        
+        body.light-mode .fact-title {
+            color: #333;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        body.light-mode .fact-date {
+            color: #555;
+        }
+        
+        body.light-mode #prompt {
+            background-color: rgba(230, 230, 230, 0.7);
+            border-color: #666;
+        }
+        
+        body.light-mode #command-input {
+            color: #333;
+        }
+        
+        body.light-mode .search-input {
+            background-color: rgba(230, 230, 230, 0.7);
+            border-color: #666;
+            color: #333;
+        }
+        
+        body.light-mode .search-input::placeholder {
+            color: #888;
+        }
+        
+        body.light-mode .search-button,
+        body.light-mode .share-button {
+            color: #333;
+            border-color: #666;
+            background-color: rgba(200, 200, 200, 0.5);
+        }
+        
+        body.light-mode .search-button:hover,
+        body.light-mode .share-button:hover {
+            background-color: rgba(180, 180, 180, 0.7);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        body.light-mode .category {
+            background-color: rgba(230, 230, 230, 0.7);
+            border-color: #666;
+        }
+        
+        body.light-mode .category:hover {
+            background-color: rgba(210, 210, 210, 0.9);
+        }
+        
+        body.light-mode .category-title {
+            color: #333;
+        }
+        
+        body.light-mode .subcategory-details {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-color: #333;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        body.light-mode .details-header {
+            border-bottom-color: #666;
+        }
+        
+        body.light-mode .details-title {
+            color: #333;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        body.light-mode .details-description {
+            color: #555;
+        }
+        
+        body.light-mode .close-button {
+            color: #ff0000;
+        }
+        
+        body.light-mode .close-button:hover {
+            color: #cc0000;
+        }
+        
+        body.light-mode ::-webkit-scrollbar-track {
+            background: #eee;
+        }
+        
+        body.light-mode ::-webkit-scrollbar-thumb {
+            background: #999;
+        }
+        
+        body.light-mode ::-webkit-scrollbar-thumb:hover {
+            background: #777;
+        }
+        
+        /* Botón de cambio de modo */
+        #theme-toggle {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 40, 0, 0.7);
+            border: 1px solid #008800;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+        
+        #theme-toggle:hover {
+            background: rgba(0, 80, 0, 0.9);
+            transform: scale(1.1);
+        }
+        
+        body.light-mode #theme-toggle {
+            background: rgba(200, 200, 200, 0.7);
+            border-color: #666;
+        }
+        
+        body.light-mode #theme-toggle:hover {
+            background: rgba(180, 180, 180, 0.9);
+        }
+        
+        /* Animaciones y transiciones */
+        .output, .catalog-menu {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
     </style>
 </head>
 <body>
     <canvas id="matrix-bg"></canvas>
+    <div id="theme-toggle" onclick="toggleTheme()">◐</div>
     <div id="terminal">
         <div id="header">
             <h1>Terminal de Historia de la Programación</h1>
@@ -491,6 +729,7 @@
                 <div>Escribe "catalogo" para ver ideas de proyectos</div>
                 <div>Escribe "hechos" para buscar en todos los hechos disponibles</div>
                 <div>Escribe "ayuda" para ver todos los comandos disponibles</div>
+                <div>Escribe "modo" para cambiar entre modo oscuro/claro</div>
             </div>
             <div class="output" id="monthly-fact-container">
                 <div class="fact-title">Hecho del Mes</div>
@@ -639,11 +878,15 @@
             commandInput.focus();
             showToday();
             showMonthlyFact();
+            applySavedTheme();
         };
 
         // Manejar entrada de comandos
         commandInput.addEventListener('keydown', function(e) {
             if (e.key === 'Enter') {
+                // Reproducir sonido de tecla (opcional)
+                playKeystrokeSound();
+                
                 const command = commandInput.value.trim().toLowerCase();
                 processCommand(command);
                 commandInput.value = '';
@@ -682,6 +925,9 @@
                 case 'inicio':
                     goHome();
                     break;
+                case 'modo':
+                    toggleTheme();
+                    break;
                 case '':
                     // No hacer nada para comandos vacíos
                     break;
@@ -707,6 +953,7 @@
                 <div>&nbsp;&nbsp;catálogo&nbsp;- Mostrar catálogo de ideas de proyectos</div>
                 <div>&nbsp;&nbsp;limpiar&nbsp;&nbsp;- Limpiar la pantalla de la terminal</div>
                 <div>&nbsp;&nbsp;inicio&nbsp;&nbsp;&nbsp;- Volver a la pantalla principal</div>
+                <div>&nbsp;&nbsp;modo&nbsp;&nbsp;&nbsp;&nbsp;- Cambiar entre modo oscuro/claro</div>
                 <div>También puedes usar los enlaces en la barra de navegación para acceder rápidamente a las secciones.</div>
             `;
             contentDiv.appendChild(helpElement);
@@ -1255,6 +1502,37 @@
             }
         }
         
+        // Función para cambiar entre modo oscuro y claro
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.getElementById('theme-toggle');
+            
+            if (body.classList.contains('light-mode')) {
+                body.classList.remove('light-mode');
+                localStorage.setItem('theme', 'dark');
+                themeToggle.textContent = '◐';
+            } else {
+                body.classList.add('light-mode');
+                localStorage.setItem('theme', 'light');
+                themeToggle.textContent = '◑';
+            }
+        }
+        
+        // Aplicar tema guardado o predeterminado
+        function applySavedTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const themeToggle = document.getElementById('theme-toggle');
+            
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-mode');
+                themeToggle.textContent = '◑';
+            } else {
+                // Tema oscuro por defecto
+                document.body.classList.remove('light-mode');
+                themeToggle.textContent = '◐';
+            }
+        }
+        
         // Función para mostrar el "Hecho del Mes"
         function showMonthlyFact() {
             // Obtener el mes actual
@@ -1284,6 +1562,25 @@
                 `;
             }
         }
+        
+        // Función para reproducir sonido de tecla (opcional)
+        function playKeystrokeSound() {
+            // Esta es una implementación simple sin archivo de audio real
+            // En una implementación completa, se cargaría un archivo de sonido
+            try {
+                // Solo un ejemplo de cómo se podría implementar
+                // const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                // const oscillator = audioContext.createOscillator();
+                // oscillator.type = 'square';
+                // oscillator.frequency.setValueAtTime(200, audioContext.currentTime);
+                // oscillator.connect(audioContext.destination);
+                // oscillator.start();
+                // oscillator.stop(audioContext.currentTime + 0.1);
+            } catch (e) {
+                // Silenciar errores si el API de audio no está disponible
+            }
+        }
+        
     </script>
 </body>
 </html>
