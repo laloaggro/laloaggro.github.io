@@ -416,6 +416,53 @@
             background-color: rgba(0, 30, 0, 0.5);
             border-left: 3px solid #ffff00;
         }
+        
+        /* Barra de navegación */
+        #navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px 0;
+            border-bottom: 1px solid #008800;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .nav-link {
+            color: #00ff00;
+            text-decoration: none;
+            padding: 5px 10px;
+            border: 1px solid #008800;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            background-color: rgba(0, 80, 0, 0.5);
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+        }
+        
+        .back-button {
+            background-color: rgba(0, 40, 0, 0.7);
+            color: #00ff00;
+            border: 1px solid #008800;
+            border-radius: 5px;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 1em;
+            transition: all 0.3s ease;
+        }
+        
+        .back-button:hover {
+            background-color: rgba(0, 80, 0, 0.9);
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+        }
+        
     </style>
 </head>
 <body>
@@ -425,6 +472,17 @@
             <h1>Terminal de Historia de la Programación</h1>
             <p>Escribe "ayuda" para ver los comandos disponibles</p>
         </div>
+        
+        <div id="navbar">
+            <div class="nav-links">
+                <a href="#" class="nav-link" onclick="showToday(); return false;">Hoy</a>
+                <a href="#" class="nav-link" onclick="showRandom(); return false;">Aleatorio</a>
+                <a href="#" class="nav-link" onclick="showAllFacts(); return false;">Hechos</a>
+                <a href="#" class="nav-link" onclick="showCatalog(); return false;">Catálogo</a>
+            </div>
+            <button class="back-button" onclick="goHome()">Inicio</button>
+        </div>
+        
         <div id="content">
             <div class="output">
                 <div>Bienvenido a la Terminal de Historia de la Programación v1.0</div>
@@ -621,6 +679,9 @@
                 case 'catálogo':
                     showCatalog();
                     break;
+                case 'inicio':
+                    goHome();
+                    break;
                 case '':
                     // No hacer nada para comandos vacíos
                     break;
@@ -645,6 +706,8 @@
                 <div>&nbsp;&nbsp;catalogo&nbsp;&nbsp;- Mostrar catálogo de ideas de proyectos</div>
                 <div>&nbsp;&nbsp;catálogo&nbsp;- Mostrar catálogo de ideas de proyectos</div>
                 <div>&nbsp;&nbsp;limpiar&nbsp;&nbsp;- Limpiar la pantalla de la terminal</div>
+                <div>&nbsp;&nbsp;inicio&nbsp;&nbsp;&nbsp;- Volver a la pantalla principal</div>
+                <div>También puedes usar los enlaces en la barra de navegación para acceder rápidamente a las secciones.</div>
             `;
             contentDiv.appendChild(helpElement);
         }
@@ -836,6 +899,11 @@
         
         // Mostrar catálogo de ideas de proyectos
         function showCatalog() {
+            // Verificar si el catálogo ya está mostrado
+            if (document.querySelector('.catalog-menu')) {
+                return;
+            }
+            
             // En lugar de borrar todo el contenido, agregamos el catálogo al final
             const catalogElement = document.createElement('div');
             catalogElement.className = 'catalog-menu active';
@@ -1157,11 +1225,33 @@
         }
         
         // Función para volver al contenido principal
-        function goBack() {
-            // Elimina el catálogo del DOM
+        function goHome() {
+            // Eliminar catálogo si está presente
             const catalogElement = document.querySelector('.catalog-menu');
             if (catalogElement) {
                 catalogElement.remove();
+            }
+            
+            // Eliminar detalles de subcategorías si están presentes
+            const detailsElement = document.querySelector('.subcategory-details');
+            if (detailsElement) {
+                detailsElement.remove();
+            }
+            
+            // Mostrar mensaje de bienvenida si no está presente
+            const welcomeMessage = document.querySelector('.welcome-message');
+            if (!welcomeMessage) {
+                const welcomeElement = document.createElement('div');
+                welcomeElement.className = 'output';
+                welcomeElement.innerHTML = `
+                    <div>Bienvenido a la Terminal de Historia de la Programación v1.0</div>
+                    <div>Escribe "hoy" para ver el hecho de programación del día</div>
+                    <div>Escribe "aleatorio" para ver un hecho de programación aleatorio</div>
+                    <div>Escribe "catalogo" para ver ideas de proyectos</div>
+                    <div>Escribe "hechos" para buscar en todos los hechos disponibles</div>
+                    <div>Escribe "ayuda" para ver todos los comandos disponibles</div>
+                `;
+                contentDiv.insertBefore(welcomeElement, contentDiv.firstChild);
             }
         }
         
