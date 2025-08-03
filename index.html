@@ -27,22 +27,34 @@
         }
         
         #terminal {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            border: 1px solid #00ff00;
-            box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 25px;
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
             height: 80vh;
             overflow-y: auto;
             position: relative;
-            background-color: rgba(0, 0, 0, 0.7);
+            background-color: rgba(0, 15, 0, 0.8);
         }
         
         #header {
             text-align: center;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #00ff00;
-            padding-bottom: 10px;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #00ff00;
+            padding-bottom: 15px;
+        }
+        
+        #header h1 {
+            font-size: 2.2em;
+            margin: 0;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+        }
+        
+        #header p {
+            font-size: 1.1em;
+            margin: 10px 0 0 0;
         }
         
         #content {
@@ -52,11 +64,16 @@
         #prompt {
             display: flex;
             align-items: center;
-            margin-top: 20px;
+            margin-top: 25px;
+            padding: 10px;
+            background-color: rgba(0, 30, 0, 0.5);
+            border-radius: 5px;
+            border: 1px solid #008800;
         }
         
         #prompt span {
             margin-right: 10px;
+            font-weight: bold;
         }
         
         #command-input {
@@ -64,31 +81,54 @@
             border: none;
             color: #00ff00;
             font-family: 'Courier New', monospace;
-            font-size: 1em;
+            font-size: 1.1em;
             width: calc(100% - 30px);
             outline: none;
         }
         
         .command {
             color: #00ff00;
+            margin: 10px 0;
+            padding: 5px 0;
         }
         
         .output {
-            margin: 10px 0;
+            margin: 15px 0;
+            padding: 15px;
+            background-color: rgba(0, 20, 0, 0.3);
+            border-radius: 5px;
+            border-left: 3px solid #00cc00;
         }
         
         .fact-title {
             color: #00ff00;
             font-weight: bold;
-            margin: 15px 0 5px 0;
+            font-size: 1.4em;
+            margin: 10px 0 5px 0;
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
         }
         
         .fact-date {
             color: #ffff00;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin: 5px 0;
         }
         
         .fact-content {
+            margin: 15px 0;
+            line-height: 1.6;
+            font-size: 1.05em;
+        }
+        
+        .welcome-message {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .welcome-message div {
             margin: 10px 0;
+            font-size: 1.1em;
         }
         
         .blink {
@@ -100,15 +140,111 @@
         }
         
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 10px;
         }
         
         ::-webkit-scrollbar-track {
-            background: #000;
+            background: #001100;
+            border-radius: 5px;
         }
         
         ::-webkit-scrollbar-thumb {
-            background: #00ff00;
+            background: #008800;
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00cc00;
+        }
+        
+        /* Nuevos estilos para el menú de catálogo */
+        .catalog-menu {
+            display: none;
+            margin: 20px 0;
+            padding: 20px;
+            background-color: rgba(0, 20, 0, 0.3);
+            border-radius: 5px;
+            border-left: 3px solid #00cc00;
+        }
+        
+        .catalog-menu.active {
+            display: block;
+        }
+        
+        .catalog-title {
+            color: #00ff00;
+            font-weight: bold;
+            font-size: 1.4em;
+            margin: 10px 0 15px 0;
+            text-align: center;
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+        }
+        
+        .catalog-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .category {
+            background-color: rgba(0, 30, 0, 0.5);
+            border: 1px solid #008800;
+            border-radius: 5px;
+            padding: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .category:hover {
+            background-color: rgba(0, 50, 0, 0.7);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 255, 0, 0.3);
+        }
+        
+        .category-title {
+            color: #ffff00;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin: 0 0 10px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .category-title::before {
+            content: "•";
+            margin-right: 10px;
+            font-size: 1.5em;
+        }
+        
+        .category-items {
+            padding-left: 20px;
+        }
+        
+        .category-item {
+            margin: 8px 0;
+            padding: 5px 0;
+            border-bottom: 1px dashed rgba(0, 255, 0, 0.2);
+        }
+        
+        .category-item:last-child {
+            border-bottom: none;
+        }
+        
+        .back-button {
+            display: inline-block;
+            margin: 15px 0;
+            padding: 8px 15px;
+            background-color: rgba(0, 30, 0, 0.5);
+            border: 1px solid #008800;
+            border-radius: 5px;
+            color: #00ff00;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .back-button:hover {
+            background-color: rgba(0, 50, 0, 0.7);
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
         }
     </style>
 </head>
@@ -124,6 +260,7 @@
                 <div>Bienvenido a la Terminal de Historia de la Programación v1.0</div>
                 <div>Escribe "hoy" para ver el hecho de programación del día</div>
                 <div>Escribe "aleatorio" para ver un hecho de programación aleatorio</div>
+                <div>Escribe "catalogo" para ver ideas de proyectos</div>
                 <div>Escribe "ayuda" para ver todos los comandos disponibles</div>
             </div>
         </div>
@@ -303,6 +440,10 @@
                 case 'hechos':
                     showAllFacts();
                     break;
+                case 'catalogo':
+                case 'catálogo':
+                    showCatalog();
+                    break;
                 case '':
                     // No hacer nada para comandos vacíos
                     break;
@@ -324,6 +465,7 @@
                 <div>&nbsp;&nbsp;hoy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Mostrar el hecho de programación de hoy</div>
                 <div>&nbsp;&nbsp;aleatorio&nbsp;- Mostrar un hecho de programación aleatorio</div>
                 <div>&nbsp;&nbsp;hechos&nbsp;&nbsp;&nbsp;- Listar todos los hechos disponibles</div>
+                <div>&nbsp;&nbsp;catalogo&nbsp;&nbsp;- Mostrar catálogo de ideas de proyectos</div>
                 <div>&nbsp;&nbsp;limpiar&nbsp;&nbsp;- Limpiar la pantalla de la terminal</div>
             `;
             contentDiv.appendChild(helpElement);
@@ -411,6 +553,74 @@
             errorElement.className = 'output';
             errorElement.innerHTML = `Comando no encontrado: ${command}. Escribe 'ayuda' para ver los comandos disponibles.`;
             contentDiv.appendChild(errorElement);
+        }
+        
+        // Mostrar catálogo de ideas de proyectos
+        function showCatalog() {
+            const catalogElement = document.createElement('div');
+            catalogElement.className = 'catalog-menu active';
+            catalogElement.innerHTML = `
+                <div class="catalog-title">Catálogo de Ideas de Proyectos</div>
+                <div class="catalog-categories">
+                    <div class="category">
+                        <div class="category-title">🚀 Proyectos Personales</div>
+                        <div class="category-items">
+                            <div class="category-item">Portafolio profesional (CV interactivo con proyectos, habilidades y contacto)</div>
+                            <div class="category-item">Blog técnico (usando Jekyll, Hugo o Hexo)</div>
+                            <div class="category-item">Currículum online (diseño minimalista o interactivo)</div>
+                            <div class="category-item">Landing page para marca personal, freelancing o servicios</div>
+                        </div>
+                    </div>
+                    
+                    <div class="category">
+                        <div class="category-title">🎨 Creatividad y Diseño</div>
+                        <div class="category-items">
+                            <div class="category-item">Galería de arte/diseño (ilustraciones, fotografía o diseños CSS/JS)</div>
+                            <div class="category-item">Experimentos web (animaciones con CSS/JS, efectos visuales, shaders)</div>
+                            <div class="category-item">Linktree personalizado (centralizar redes sociales/proyectos)</div>
+                            <div class="category-item">Tutoriales interactivos (demostraciones en JS)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="category">
+                        <div class="category-title">🛠 Herramientas Útiles</div>
+                        <div class="category-items">
+                            <div class="category-item">Documentación de un proyecto (alternativa a ReadTheDocs)</div>
+                            <div class="category-item">Generador de contraseñas o herramientas simples</div>
+                            <div class="category-item">Cheatsheets (hojas de referencia para comandos, atajos, frameworks)</div>
+                            <div class="category-item">Lista de recursos (libros, cursos, herramientas recomendadas)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="category">
+                        <div class="category-title">🎮 Entretenimiento y Juegos</div>
+                        <div class="category-items">
+                            <div class="category-item">Juegos web simples (tres en raya, memoria, mini-RPG con JS)</div>
+                            <div class="category-item">Web de películas/series (reseñar favoritas, estilo Letterboxd)</div>
+                            <div class="category-item">Generador de memes o frases aleatorias</div>
+                        </div>
+                    </div>
+                    
+                    <div class="category">
+                        <div class="category-title">📚 Educación y Comunidad</div>
+                        <div class="category-items">
+                            <div class="category-item">Apuntes o resúmenes (cursos, universidad, bootcamps)</div>
+                            <div class="category-item">Traductor básico (lenguajes inventados o jerga técnica)</div>
+                            <div class="category-item">Web colaborativa (grupo de estudio o comunidad)</div>
+                        </div>
+                    </div>
+                    
+                    <div class="category">
+                        <div class="category-title">💡 Ideas Originales</div>
+                        <div class="category-items">
+                            <div class="category-item">Máquina del tiempo (linterna mágica con fotos/eventos)</div>
+                            <div class="category-item">Web para enviarte mensajes al futuro (JS y localStorage)</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="back-button" onclick="clearTerminal()">← Volver</div>
+            `;
+            contentDiv.appendChild(catalogElement);
         }
     </script>
 </body>
