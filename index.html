@@ -27,23 +27,18 @@
         }
         
         #terminal {
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 25px;
-            border: 2px solid #00ff00;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
-            height: 80vh;
-            overflow-y: auto;
-            position: relative;
+            display: flex;
+            flex-direction: column;
+            max-width: 100%;
+            height: 100vh;
+            overflow: hidden;
             background-color: rgba(0, 15, 0, 0.8);
         }
         
         #header {
             text-align: center;
-            margin-bottom: 25px;
+            padding: 15px;
             border-bottom: 2px solid #00ff00;
-            padding-bottom: 15px;
         }
         
         #header h1 {
@@ -57,14 +52,104 @@
             margin: 10px 0 0 0;
         }
         
+        #top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(0, 20, 0, 0.7);
+            border-bottom: 1px solid #008800;
+        }
+        
+        #back-button-container {
+            position: static;
+        }
+        
+        .back-button {
+            background-color: rgba(0, 40, 0, 0.7);
+            color: #00ff00;
+            border: 1px solid #008800;
+            border-radius: 5px;
+            padding: 8px 15px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 1em;
+        }
+        
+        #theme-toggle {
+            position: static;
+            margin: 0;
+            background: rgba(0, 40, 0, 0.7);
+            border: 1px solid #008800;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        #navbar {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(0, 30, 0, 0.5);
+            border-bottom: 1px solid #008800;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-link {
+            color: #00ff00;
+            text-decoration: none;
+            padding: 8px 15px;
+            border: 1px solid #008800;
+            border-radius: 5px;
+            transition: none;
+        }
+        
+        #main-content {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+        
+        #catalog-sidebar {
+            width: 300px;
+            background-color: rgba(0, 20, 0, 0.5);
+            border-right: 1px solid #008800;
+            overflow-y: auto;
+            padding: 15px;
+            display: none;
+        }
+        
+        #catalog-sidebar.active {
+            display: block;
+        }
+        
+        #terminal-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            padding: 20px;
+        }
+        
         #content {
-            min-height: 300px;
+            flex: 1;
+            overflow-y: auto;
+            margin-bottom: 20px;
         }
         
         #prompt {
             display: flex;
             align-items: center;
-            margin-top: 25px;
             padding: 10px;
             background-color: rgba(0, 30, 0, 0.5);
             border-radius: 5px;
@@ -711,17 +796,29 @@
             <p>Escribe "ayuda" para ver los comandos disponibles</p>
         </div>
         
+        <div id="top-bar">
+            <button class="back-button" onclick="goHome()">Inicio</button>
+            <div id="theme-toggle" onclick="toggleTheme()">◐</div>
+        </div>
+                    
         <div id="navbar">
             <div class="nav-links">
                 <a href="#" class="nav-link" onclick="showToday(); return false;">Hoy</a>
                 <a href="#" class="nav-link" onclick="showRandom(); return false;">Aleatorio</a>
                 <a href="#" class="nav-link" onclick="showAllFacts(); return false;">Hechos</a>
-                <a href="#" class="nav-link" onclick="showCatalog(); return false;">Catálogo</a>
+                <a href="#" class="nav-link" onclick="toggleCatalogSidebar(); return false;">Catálogo</a>
             </div>
-            <button class="back-button" onclick="goHome()">Inicio</button>
         </div>
         
         <div id="content">
+            <div class="output">
+                <div>Bienvenido a la Terminal de Historia de la Programación v1.0</div>
+                <div>Escribe "hoy" para ver el hecho de programación del día</div>
+                <div>Escribe "aleatorio" para ver un hecho de programación aleatorio</div>
+                <div>Escribe "hechos" para buscar en todos los hechos disponibles</div>
+                <div>Escribe "ayuda" para ver todos los comandos disponibles</div>
+                <div>Escribe "modo" para cambiar entre modo oscuro/claro</div>
+            </div>
             <div class="output" id="monthly-fact-container">
                 <div class="fact-title">Hecho del Mes</div>
                 <div id="monthly-fact-content"></div>
@@ -733,6 +830,108 @@
             <span class="blink">_</span>
         </div>
     </div>
+</div>
+<div id="catalog-sidebar">
+    <div class="catalog-title">Catálogo de Ideas de Proyectos</div>
+    <div class="catalog-categories">
+        <div class="category">
+            <div class="category-title">🚀 Proyectos Personales</div>
+            <div class="category-items">
+                <div class="category-item" onclick="showSubcategoryDetails('portafolio')">
+                    Portafolio profesional (CV interactivo con proyectos, habilidades y contacto)
+                </div>
+                <div class="category-item" onclick="showSubcategoryDetails('blog')">
+                    Blog técnico (usando Jekyll, Hugo o Hexo para escribir sobre programación, diseño, etc.)
+                </div>
+                <div class="category-item" onclick="showSubcategoryDetails('curriculum')">
+                    Currículum online (con diseño minimalista o interactivo)
+                </div>
+                <div class="category-item" onclick="showSubcategoryDetails('landing')">
+                    Landing page para tu marca personal, freelancing o servicios
+                </div>
+            </div>
+        </div>
+        
+        <div class="category">
+            <div class="category-title">🎨 Creatividad y Diseño</div>
+            <div class="category-items">
+                <div class="category-item" onclick="showSubcategoryDetails('galeria')">
+                    Galería de arte/diseño (muestra ilustraciones, fotografía o diseños CSS/JS)
+                </div>
+                <div class="category-item" onclick="showSubcategoryDetails('experimentos')">
+                    Experimentos web (animaciones con CSS/JS, efectos visuales, shaders)
+                </div>
+                <div class="category-item" onclick="showSubcategoryDetails('linktree')">
+                    Un "Linktree" personalizado (para centralizar tus redes sociales/proyectos)
+                </div>
+                <div class="category-item" onclick="showSubcategoryDetails('tutoriales')">
+                    Tutoriales interactivos (ej: cómo funciona un algoritmo con demostraciones en JS)
+                </div>
+            </div>
+        </div>
+        
+        <div class="category">
+            <div class="category-title">🛠 Herramientas Útiles</div>
+            <div class="category-items">
+                <div class="category-item" onclick="showSubcategoryDetails('documentacion')">
+                    Documentación de un proyecto (como alternativa a ReadTheDocs)
+                </div>
+                <div class="category-item" onclick="showSubcategoryDetails('generador')">
+                    Generador de contraseñas o herramientas simples (calculadoras, conversores)
+                </div>
+                <div class="category-item" onclick="showSubcategoryDetails('cheatsheets')">
+                    Cheatsheets (hojas de referencia para comandos, atajos, frameworks)
+                </div>
+                <div class="category-item" onclick="showSubcategoryDetails('recursos')">
+                    Lista de recursos (libros, cursos, herramientas recomendadas sobre un tema)
+                </div>
+            </div>
+        </div>
+        
+        <div class="category">
+            <div class="category-title">🎮 Entretenimiento y Juegos</div>
+            <div class="category-items">
+                <div class="category-item" onclick="showSubcategoryDetails('juegos')">
+                    Juegos web simples (como un tres en raya, memoria, o un mini-RPG con JS)
+                </div>
+                <div class="category-item" onclick="showSubcategoryDetails('peliculas')">
+                    Web de películas/series (para reseñar tus favoritas, estilo Letterboxd)
+                </div>
+                <div class="category-item" onclick="showSubcategoryDetails('memes')">
+                    Generador de memes o de frases aleatorias
+                </div>
+            </div>
+        </div>
+        
+        <div class="category">
+            <div class="category-title">📚 Educación y Comunidad</div>
+            <div class="category-items">
+                <div class="category-item" onclick="showSubcategoryDetails('apuntes')">
+                    Apuntes o resúmenes (de cursos, universidad, bootcamps)
+                </div>
+                <div class="category-item" onclick="showSubcategoryDetails('traductor')">
+                    Traductor básico (para lenguajes inventados o jerga técnica)
+                </div>
+                <div class="category-item" onclick="showSubcategoryDetails('colaborativa')">
+                    Web colaborativa (para un grupo de estudio o comunidad)
+                </div>
+            </div>
+        </div>
+        
+        <div class="category">
+            <div class="category-title">💡 Ideas Originales</div>
+            <div class="category-items">
+                <div class="category-item" onclick="showSubcategoryDetails('maquina')">
+                    Una "máquina del tiempo" (linterna mágica con fotos/eventos de tu vida)
+                </div>
+                <div class="category-item" onclick="showSubcategoryDetails('mensajes')">
+                    Web para enviarte mensajes al futuro (con JavaScript y localStorage)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
 
     <script>
         // Efecto de fondo Matrix
@@ -910,10 +1109,6 @@
                 case 'hechos':
                     showAllFacts();
                     break;
-                case 'catalogo':
-                case 'catálogo':
-                    showCatalog();
-                    break;
                 case 'inicio':
                     goHome();
                     break;
@@ -941,8 +1136,6 @@
                 <div>&nbsp;&nbsp;hoy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Mostrar el hecho de programación de hoy</div>
                 <div>&nbsp;&nbsp;aleatorio&nbsp;- Mostrar un hecho de programación aleatorio</div>
                 <div>&nbsp;&nbsp;hechos&nbsp;&nbsp;&nbsp;- Listar todos los hechos disponibles</div>
-                <div>&nbsp;&nbsp;catalogo&nbsp;&nbsp;- Mostrar catálogo de ideas de proyectos</div>
-                <div>&nbsp;&nbsp;catálogo&nbsp;- Mostrar catálogo de ideas de proyectos</div>
                 <div>&nbsp;&nbsp;limpiar&nbsp;&nbsp;- Limpiar la pantalla de la terminal</div>
                 <div>&nbsp;&nbsp;inicio&nbsp;&nbsp;&nbsp;- Volver a la pantalla principal</div>
                 <div>&nbsp;&nbsp;modo&nbsp;&nbsp;&nbsp;&nbsp;- Cambiar entre modo oscuro/claro</div>
@@ -1165,119 +1358,6 @@
             errorElement.innerHTML = `Comando no encontrado: ${command}. Escribe 'ayuda' para ver los comandos disponibles.`;
             contentDiv.appendChild(errorElement);
             ensureWelcomeMessage();
-        }
-        
-        // Mostrar catálogo de ideas de proyectos
-        function showCatalog() {
-            // Verificar si el catálogo ya está mostrado
-            if (document.querySelector('.catalog-menu')) {
-                return;
-            }
-            
-            // En lugar de borrar todo el contenido, agregamos el catálogo al final
-            const catalogElement = document.createElement('div');
-            catalogElement.className = 'catalog-menu active';
-            catalogElement.innerHTML = `
-                <div class="catalog-title">Catálogo de Ideas de Proyectos</div>
-                <div class="catalog-categories">
-                    <div class="category">
-                        <div class="category-title">🚀 Proyectos Personales</div>
-                        <div class="category-items">
-                            <div class="category-item" onclick="showSubcategoryDetails('portafolio')">
-                                Portafolio profesional (CV interactivo con proyectos, habilidades y contacto)
-                            </div>
-                            <div class="category-item" onclick="showSubcategoryDetails('blog')">
-                                Blog técnico (usando Jekyll, Hugo o Hexo para escribir sobre programación, diseño, etc.)
-                            </div>
-                            <div class="category-item" onclick="showSubcategoryDetails('curriculum')">
-                                Currículum online (con diseño minimalista o interactivo)
-                            </div>
-                            <div class="category-item" onclick="showSubcategoryDetails('landing')">
-                                Landing page para tu marca personal, freelancing o servicios
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="category">
-                        <div class="category-title">🎨 Creatividad y Diseño</div>
-                        <div class="category-items">
-                            <div class="category-item" onclick="showSubcategoryDetails('galeria')">
-                                Galería de arte/diseño (muestra ilustraciones, fotografía o diseños CSS/JS)
-                            </div>
-                            <div class="category-item" onclick="showSubcategoryDetails('experimentos')">
-                                Experimentos web (animaciones con CSS/JS, efectos visuales, shaders)
-                            </div>
-                            <div class="category-item" onclick="showSubcategoryDetails('linktree')">
-                                Un "Linktree" personalizado (para centralizar tus redes sociales/proyectos)
-                            </div>
-                            <div class="category-item" onclick="showSubcategoryDetails('tutoriales')">
-                                Tutoriales interactivos (ej: cómo funciona un algoritmo con demostraciones en JS)
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="category">
-                        <div class="category-title">🛠 Herramientas Útiles</div>
-                        <div class="category-items">
-                            <div class="category-item" onclick="showSubcategoryDetails('documentacion')">
-                                Documentación de un proyecto (como alternativa a ReadTheDocs)
-                            </div>
-                            <div class="category-item" onclick="showSubcategoryDetails('generador')">
-                                Generador de contraseñas o herramientas simples (calculadoras, conversores)
-                            </div>
-                            <div class="category-item" onclick="showSubcategoryDetails('cheatsheets')">
-                                Cheatsheets (hojas de referencia para comandos, atajos, frameworks)
-                            </div>
-                            <div class="category-item" onclick="showSubcategoryDetails('recursos')">
-                                Lista de recursos (libros, cursos, herramientas recomendadas sobre un tema)
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="category">
-                        <div class="category-title">🎮 Entretenimiento y Juegos</div>
-                        <div class="category-items">
-                            <div class="category-item" onclick="showSubcategoryDetails('juegos')">
-                                Juegos web simples (como un tres en raya, memoria, o un mini-RPG con JS)
-                            </div>
-                            <div class="category-item" onclick="showSubcategoryDetails('peliculas')">
-                                Web de películas/series (para reseñar tus favoritas, estilo Letterboxd)
-                            </div>
-                            <div class="category-item" onclick="showSubcategoryDetails('memes')">
-                                Generador de memes o de frases aleatorias
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="category">
-                        <div class="category-title">📚 Educación y Comunidad</div>
-                        <div class="category-items">
-                            <div class="category-item" onclick="showSubcategoryDetails('apuntes')">
-                                Apuntes o resúmenes (de cursos, universidad, bootcamps)
-                            </div>
-                            <div class="category-item" onclick="showSubcategoryDetails('traductor')">
-                                Traductor básico (para lenguajes inventados o jerga técnica)
-                            </div>
-                            <div class="category-item" onclick="showSubcategoryDetails('colaborativa')">
-                                Web colaborativa (para un grupo de estudio o comunidad)
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="category">
-                        <div class="category-title">💡 Ideas Originales</div>
-                        <div class="category-items">
-                            <div class="category-item" onclick="showSubcategoryDetails('maquina')">
-                                Una "máquina del tiempo" (linterna mágica con fotos/eventos de tu vida)
-                            </div>
-                            <div class="category-item" onclick="showSubcategoryDetails('mensajes')">
-                                Web para enviarte mensajes al futuro (con JavaScript y localStorage)
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-            contentDiv.appendChild(catalogElement);
         }
         
         // Mostrar detalles de una subcategoría específica
@@ -1587,47 +1667,10 @@
             }
         }
         
-        // Función para asegurar que el mensaje de bienvenida esté presente
-        function ensureWelcomeMessage() {
-            // Verificar si el mensaje de bienvenida ya existe
-            const welcomeExists = Array.from(contentDiv.children).some(child => 
-                child.classList.contains('output') && 
-                child.textContent.includes('Bienvenido a la Terminal de Historia de la Programación')
-            );
-            
-            // Agregar mensaje de bienvenida solo si no existe
-            if (!welcomeExists) {
-                const welcomeElement = document.createElement('div');
-                welcomeElement.className = 'output';
-                welcomeElement.innerHTML = `
-                    <div>Bienvenido a la Terminal de Historia de la Programación v1.0</div>
-                    <div>Escribe "hoy" para ver el hecho de programación del día</div>
-                    <div>Escribe "aleatorio" para ver un hecho de programación aleatorio</div>
-                    <div>Escribe "catalogo" para ver ideas de proyectos</div>
-                    <div>Escribe "hechos" para buscar en todos los hechos disponibles</div>
-                    <div>Escribe "ayuda" para ver todos los comandos disponibles</div>
-                    <div>Escribe "modo" para cambiar entre modo oscuro/claro</div>
-                `;
-                contentDiv.insertBefore(welcomeElement, contentDiv.firstChild);
-            }
-        }
-        
-        // Función para reproducir sonido de tecla (opcional)
-        function playKeystrokeSound() {
-            // Esta es una implementación simple sin archivo de audio real
-            // En una implementación completa, se cargaría un archivo de sonido
-            try {
-                // Solo un ejemplo de cómo se podría implementar
-                // const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-                // const oscillator = audioContext.createOscillator();
-                // oscillator.type = 'square';
-                // oscillator.frequency.setValueAtTime(200, audioContext.currentTime);
-                // oscillator.connect(audioContext.destination);
-                // oscillator.start();
-                // oscillator.stop(audioContext.currentTime + 0.1);
-            } catch (e) {
-                // Silenciar errores si el API de audio no está disponible
-            }
+        // Función para alternar la visibilidad de la barra lateral del catálogo
+        function toggleCatalogSidebar() {
+            const catalogSidebar = document.getElementById('catalog-sidebar');
+            catalogSidebar.classList.toggle('active');
         }
         
     </script>
