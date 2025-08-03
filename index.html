@@ -12,6 +12,18 @@
             margin: 0;
             padding: 20px;
             line-height: 1.4;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #matrix-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.3;
         }
         
         #terminal {
@@ -22,6 +34,8 @@
             box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
             height: 80vh;
             overflow-y: auto;
+            position: relative;
+            background-color: rgba(0, 0, 0, 0.7);
         }
         
         #header {
@@ -99,6 +113,7 @@
     </style>
 </head>
 <body>
+    <canvas id="matrix-bg"></canvas>
     <div id="terminal">
         <div id="header">
             <h1>Terminal de Historia de la Programación</h1>
@@ -120,6 +135,51 @@
     </div>
 
     <script>
+        // Efecto de fondo Matrix
+        const canvas = document.getElementById('matrix-bg');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        const matrixChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()_+-=[]{}|;:,.<>?/\\";
+        const charsArray = matrixChars.split('');
+        
+        const fontSize = 14;
+        const columns = canvas.width / fontSize;
+        
+        const drops = [];
+        for (let i = 0; i < columns; i++) {
+            drops[i] = Math.floor(Math.random() * canvas.height / fontSize);
+        }
+        
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = '#00ff00';
+            ctx.font = `${fontSize}px monospace`;
+            
+            for (let i = 0; i < drops.length; i++) {
+                const text = charsArray[Math.floor(Math.random() * charsArray.length)];
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                
+                drops[i]++;
+            }
+        }
+        
+        setInterval(drawMatrix, 35);
+        
+        // Ajustar el tamaño del canvas cuando la ventana cambie de tamaño
+        window.addEventListener('resize', function() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+        
         // Base de datos de hechos de programación
         const facts = [
             {
@@ -272,6 +332,8 @@
             const day = now.getDate();
             const month = now.toLocaleString('es-ES', { month: 'long' });
             const formattedDate = day + " de " + month;
+            
+            console.log("Fecha actual:", formattedDate); // Para depuración
             
             // Intentar encontrar un hecho para hoy
             const fact = facts.find(f => f.date.toLowerCase() === formattedDate.toLowerCase());
