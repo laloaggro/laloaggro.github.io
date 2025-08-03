@@ -267,10 +267,14 @@
         // Mostrar el hecho de hoy
         function showToday() {
             const now = new Date();
-            const today = now.toLocaleString('es-ES', { day: 'numeric', month: 'long' });
+            
+            // Formatear el día para que coincida con los datos (agregar "de" entre el día y el mes)
+            const day = now.getDate();
+            const month = now.toLocaleString('es-ES', { month: 'long' });
+            const formattedDate = day + " de " + month;
             
             // Intentar encontrar un hecho para hoy
-            const fact = facts.find(f => f.date.toLowerCase() === today.toLowerCase());
+            const fact = facts.find(f => f.date.toLowerCase() === formattedDate.toLowerCase());
             
             if (fact) {
                 displayFact(fact);
