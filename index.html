@@ -246,6 +246,89 @@
             background-color: rgba(0, 50, 0, 0.7);
             box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
         }
+        
+        /* Estilos para la ventana de detalles de subcategorías */
+        .subcategory-details {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            max-width: 800px;
+            max-height: 80vh;
+            background-color: rgba(0, 20, 0, 0.95);
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.5);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .details-header {
+            position: relative;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #008800;
+        }
+        
+        .details-title {
+            color: #00ff00;
+            font-size: 1.8em;
+            margin: 0 0 10px 0;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+        }
+        
+        .details-description {
+            color: #ffff00;
+            font-size: 1.2em;
+            margin: 0;
+        }
+        
+        .close-button {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: transparent;
+            border: none;
+            color: #ff0000;
+            font-size: 2em;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .close-button:hover {
+            color: #ff5555;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+        }
+        
+        .details-content h3 {
+            color: #00ff00;
+            margin: 20px 0 10px 0;
+        }
+        
+        .details-content ul {
+            padding-left: 20px;
+        }
+        
+        .details-content li {
+            margin: 10px 0;
+            line-height: 1.5;
+        }
+        
+        .category-item {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .category-item:hover {
+            background-color: rgba(0, 80, 0, 0.5);
+            padding-left: 10px;
+        }
     </style>
 </head>
 <body>
@@ -567,62 +650,315 @@
                     <div class="category">
                         <div class="category-title">🚀 Proyectos Personales</div>
                         <div class="category-items">
-                            <div class="category-item">Portafolio profesional (CV interactivo con proyectos, habilidades y contacto)</div>
-                            <div class="category-item">Blog técnico (usando Jekyll, Hugo o Hexo para escribir sobre programación, diseño, etc.)</div>
-                            <div class="category-item">Currículum online (con diseño minimalista o interactivo)</div>
-                            <div class="category-item">Landing page para tu marca personal, freelancing o servicios</div>
+                            <div class="category-item" onclick="showSubcategoryDetails('portafolio')">
+                                Portafolio profesional (CV interactivo con proyectos, habilidades y contacto)
+                            </div>
+                            <div class="category-item" onclick="showSubcategoryDetails('blog')">
+                                Blog técnico (usando Jekyll, Hugo o Hexo para escribir sobre programación, diseño, etc.)
+                            </div>
+                            <div class="category-item" onclick="showSubcategoryDetails('curriculum')">
+                                Currículum online (con diseño minimalista o interactivo)
+                            </div>
+                            <div class="category-item" onclick="showSubcategoryDetails('landing')">
+                                Landing page para tu marca personal, freelancing o servicios
+                            </div>
                         </div>
                     </div>
                     
                     <div class="category">
                         <div class="category-title">🎨 Creatividad y Diseño</div>
                         <div class="category-items">
-                            <div class="category-item">Galería de arte/diseño (muestra ilustraciones, fotografía o diseños CSS/JS)</div>
-                            <div class="category-item">Experimentos web (animaciones con CSS/JS, efectos visuales, shaders)</div>
-                            <div class="category-item">Un "Linktree" personalizado (para centralizar tus redes sociales/proyectos)</div>
-                            <div class="category-item">Tutoriales interactivos (ej: cómo funciona un algoritmo con demostraciones en JS)</div>
+                            <div class="category-item" onclick="showSubcategoryDetails('galeria')">
+                                Galería de arte/diseño (muestra ilustraciones, fotografía o diseños CSS/JS)
+                            </div>
+                            <div class="category-item" onclick="showSubcategoryDetails('experimentos')">
+                                Experimentos web (animaciones con CSS/JS, efectos visuales, shaders)
+                            </div>
+                            <div class="category-item" onclick="showSubcategoryDetails('linktree')">
+                                Un "Linktree" personalizado (para centralizar tus redes sociales/proyectos)
+                            </div>
+                            <div class="category-item" onclick="showSubcategoryDetails('tutoriales')">
+                                Tutoriales interactivos (ej: cómo funciona un algoritmo con demostraciones en JS)
+                            </div>
                         </div>
                     </div>
                     
                     <div class="category">
                         <div class="category-title">🛠 Herramientas Útiles</div>
                         <div class="category-items">
-                            <div class="category-item">Documentación de un proyecto (como alternativa a ReadTheDocs)</div>
-                            <div class="category-item">Generador de contraseñas o herramientas simples (calculadoras, conversores)</div>
-                            <div class="category-item">Cheatsheets (hojas de referencia para comandos, atajos, frameworks)</div>
-                            <div class="category-item">Lista de recursos (libros, cursos, herramientas recomendadas sobre un tema)</div>
+                            <div class="category-item" onclick="showSubcategoryDetails('documentacion')">
+                                Documentación de un proyecto (como alternativa a ReadTheDocs)
+                            </div>
+                            <div class="category-item" onclick="showSubcategoryDetails('generador')">
+                                Generador de contraseñas o herramientas simples (calculadoras, conversores)
+                            </div>
+                            <div class="category-item" onclick="showSubcategoryDetails('cheatsheets')">
+                                Cheatsheets (hojas de referencia para comandos, atajos, frameworks)
+                            </div>
+                            <div class="category-item" onclick="showSubcategoryDetails('recursos')">
+                                Lista de recursos (libros, cursos, herramientas recomendadas sobre un tema)
+                            </div>
                         </div>
                     </div>
                     
                     <div class="category">
                         <div class="category-title">🎮 Entretenimiento y Juegos</div>
                         <div class="category-items">
-                            <div class="category-item">Juegos web simples (como un tres en raya, memoria, o un mini-RPG con JS)</div>
-                            <div class="category-item">Web de películas/series (para reseñar tus favoritas, estilo Letterboxd)</div>
-                            <div class="category-item">Generador de memes o de frases aleatorias</div>
+                            <div class="category-item" onclick="showSubcategoryDetails('juegos')">
+                                Juegos web simples (como un tres en raya, memoria, o un mini-RPG con JS)
+                            </div>
+                            <div class="category-item" onclick="showSubcategoryDetails('peliculas')">
+                                Web de películas/series (para reseñar tus favoritas, estilo Letterboxd)
+                            </div>
+                            <div class="category-item" onclick="showSubcategoryDetails('memes')">
+                                Generador de memes o de frases aleatorias
+                            </div>
                         </div>
                     </div>
                     
                     <div class="category">
                         <div class="category-title">📚 Educación y Comunidad</div>
                         <div class="category-items">
-                            <div class="category-item">Apuntes o resúmenes (de cursos, universidad, bootcamps)</div>
-                            <div class="category-item">Traductor básico (para lenguajes inventados o jerga técnica)</div>
-                            <div class="category-item">Web colaborativa (para un grupo de estudio o comunidad)</div>
+                            <div class="category-item" onclick="showSubcategoryDetails('apuntes')">
+                                Apuntes o resúmenes (de cursos, universidad, bootcamps)
+                            </div>
+                            <div class="category-item" onclick="showSubcategoryDetails('traductor')">
+                                Traductor básico (para lenguajes inventados o jerga técnica)
+                            </div>
+                            <div class="category-item" onclick="showSubcategoryDetails('colaborativa')">
+                                Web colaborativa (para un grupo de estudio o comunidad)
+                            </div>
                         </div>
                     </div>
                     
                     <div class="category">
                         <div class="category-title">💡 Ideas Originales</div>
                         <div class="category-items">
-                            <div class="category-item">Una "máquina del tiempo" (linterna mágica con fotos/eventos de tu vida)</div>
-                            <div class="category-item">Web para enviarte mensajes al futuro (con JavaScript y localStorage)</div>
+                            <div class="category-item" onclick="showSubcategoryDetails('maquina')">
+                                Una "máquina del tiempo" (linterna mágica con fotos/eventos de tu vida)
+                            </div>
+                            <div class="category-item" onclick="showSubcategoryDetails('mensajes')">
+                                Web para enviarte mensajes al futuro (con JavaScript y localStorage)
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- Removed back button as per requirements -->
             `;
             contentDiv.appendChild(catalogElement);
+        }
+        
+        // Mostrar detalles de una subcategoría específica
+        function showSubcategoryDetails(subcategory) {
+            // Primero, limpiar cualquier ventana de detalles existente
+            const existingDetails = document.querySelector('.subcategory-details');
+            if (existingDetails) {
+                existingDetails.remove();
+            }
+            
+            // Crear ventana de detalles
+            const detailsElement = document.createElement('div');
+            detailsElement.className = 'subcategory-details';
+            
+            // Definir contenido para cada subcategoría
+            const details = {
+                'documentacion': {
+                    title: 'Documentación de un proyecto',
+                    description: 'Crear una web para documentar proyectos de forma clara y organizada.',
+                    content: `
+                        <div class="details-content">
+                            <h3>Alternativa a ReadTheDocs</h3>
+                            <p>Puedes crear tu propia plataforma de documentación usando tecnologías como:</p>
+                            <ul>
+                                <li>Markdown para escribir la documentación</li>
+                                <li>Generadores estáticos como Jekyll, Hugo o Docusaurus</li>
+                                <li>Sistema de búsqueda integrado</li>
+                                <li>Versionado de documentación</li>
+                                <li>Temas personalizados</li>
+                            </ul>
+                            <h3>Ventajas:</h3>
+                            <ul>
+                                <li>Control total sobre el diseño y funcionalidad</li>
+                                <li>Personalización específica para tus necesidades</li>
+                                <li>Sin dependencia de servicios externos</li>
+                                <li>Integración con tu flujo de trabajo existente</li>
+                            </ul>
+                        </div>
+                    `
+                },
+                'generador': {
+                    title: 'Generador de contraseñas y herramientas simples',
+                    description: 'Herramientas útiles para tareas cotidianas.',
+                    content: `
+                        <div class="details-content">
+                            <h3>Tipos de herramientas</h3>
+                            <ul>
+                                <li>Generadores de contraseñas seguras</li>
+                                <li>Calculadoras personalizadas</li>
+                                <li>Convertidores de unidades</li>
+                                <li>Generadores de texto aleatorio</li>
+                                <li>Herramientas de procesamiento de texto</li>
+                            </ul>
+                            <h3>Tecnologías recomendadas:</h3>
+                            <ul>
+                                <li>HTML5 para la interfaz</li>
+                                <li>CSS3 para el diseño</li>
+                                <li>JavaScript para la lógica</li>
+                                <li>Librerías como Crypto.js para funciones criptográficas</li>
+                            </ul>
+                            <h3>Características útiles:</h3>
+                            <ul>
+                                <li>Copiar al portapapeles</li>
+                                <li>Personalización de parámetros</li>
+                                <li>Historial de resultados</li>
+                                <li>Modo oscuro/claro</li>
+                            </ul>
+                        </div>
+                    `
+                },
+                'cheatsheets': {
+                    title: 'Cheatsheets',
+                    description: 'Hojas de referencia rápida para comandos, atajos y frameworks.',
+                    content: `
+                        <div class="details-content">
+                            <h3>Tipos de Cheatsheets</h3>
+                            <ul>
+                                <li>Comandos de terminal (Linux, Git, Docker)</li>
+                                <li>Atajos de teclado (IDEs, editores, sistemas operativos)</li>
+                                <li>Sintaxis de lenguajes (JavaScript, Python, CSS)</li>
+                                <li>Frameworks y librerías (React, Vue, Bootstrap)</li>
+                            </ul>
+                            <h3>Características recomendadas:</h3>
+                            <ul>
+                                <li>Búsqueda rápida</li>
+                                <li>Categorización por temas</li>
+                                <li>Modo impresión amigable</li>
+                                <li>Descarga en PDF</li>
+                                <li>Personalización (agregar/quitar elementos)</li>
+                            </ul>
+                            <h3>Tecnologías para implementar:</h3>
+                            <ul>
+                                <li>HTML5 semántico</li>
+                                <li>CSS Grid/Flexbox para layouts</li>
+                                <li>JavaScript para interactividad</li>
+                                <li>Almacenamiento local para preferencias</li>
+                            </ul>
+                        </div>
+                    `
+                },
+                'recursos': {
+                    title: 'Lista de recursos',
+                    description: 'Colección de libros, cursos y herramientas recomendadas.',
+                    content: `
+                        <div class="details-content">
+                            <h3>Tipos de recursos</h3>
+                            <ul>
+                                <li>Libros técnicos y guías</li>
+                                <li>Cursos online (plataformas como Coursera, Udemy)</li>
+                                <li>Herramientas y software recomendados</li>
+                                <li>Blogs y sitios web especializados</li>
+                                <li>Comunidades y foros</li>
+                            </ul>
+                            <h3>Categorías comunes:</h3>
+                            <ul>
+                                <li>Programación y desarrollo web</li>
+                                <li>Diseño y UX/UI</li>
+                                <li>Seguridad informática</li>
+                                <li>Inteligencia artificial y machine learning</li>
+                                <li>DevOps y herramientas de desarrollo</li>
+                            </ul>
+                            <h3>Funcionalidades útiles:</h3>
+                            <ul>
+                                <li>Filtrado por categoría</li>
+                                <li>Búsqueda por palabras clave</li>
+                                <li>Sistema de votación/recomendación</li>
+                                <li>Enlaces actualizados automáticamente</li>
+                                <li>Exportación de listas personalizadas</li>
+                            </ul>
+                        </div>
+                    `
+                },
+                'portafolio': {
+                    title: 'Portafolio profesional',
+                    description: 'CV interactivo con proyectos, habilidades y contacto.',
+                    content: `
+                        <div class="details-content">
+                            <h3>Componentes esenciales</h3>
+                            <ul>
+                                <li>Sección de presentación personal</li>
+                                <li>Galería de proyectos con descripciones</li>
+                                <li>Lista de habilidades técnicas</li>
+                                <li>Formación académica y certificaciones</li>
+                                <li>Formulario de contacto</li>
+                            </ul>
+                            <h3>Tecnologías recomendadas:</h3>
+                            <ul>
+                                <li>HTML5 semántico</li>
+                                <li>CSS3 con animaciones y transiciones</li>
+                                <li>JavaScript para interactividad</li>
+                                <li>Frameworks como React o Vue para SPA</li>
+                            </ul>
+                            <h3>Características avanzadas:</h3>
+                            <ul>
+                                <li>Modo oscuro/claro</li>
+                                <li>Responsive design</li>
+                                <li>Animaciones de scroll</li>
+                                <li>Integración con redes sociales</li>
+                                <li>Descarga de CV en PDF</li>
+                            </ul>
+                        </div>
+                    `
+                },
+                'blog': {
+                    title: 'Blog técnico',
+                    description: 'Publicaciones sobre programación, diseño y tecnología.',
+                    content: `
+                        <div class="details-content">
+                            <h3>Plataformas recomendadas</h3>
+                            <ul>
+                                <li>Jekyll (basado en Ruby)</li>
+                                <li>Hugo (escrito en Go, muy rápido)</li>
+                                <li>Hexo (basado en Node.js)</li>
+                                <li>Gatsby (basado en React)</li>
+                                <li>Next.js (framework de React)</li>
+                            </ul>
+                            <h3>Características importantes:</h3>
+                            <ul>
+                                <li>Sistema de etiquetas y categorías</li>
+                                <li>Búsqueda de contenido</li>
+                                <li>Comentarios (con Disqus o alternativas)</li>
+                                <li>Compartir en redes sociales</li>
+                                <li>Suscripción por email</li>
+                            </ul>
+                            <h3>Contenido sugerido:</h3>
+                            <ul>
+                                <li>Tutoriales paso a paso</li>
+                                <li>Reseñas de herramientas y tecnologías</li>
+                                <li>Proyectos personales detallados</li>
+                                <li>Opiniones sobre tendencias tecnológicas</li>
+                                <li>Guías de solución de problemas</li>
+                            </ul>
+                        </div>
+                    `
+                }
+            };
+            
+            // Usar detalles por defecto si no se encuentra la subcategoría
+            const detail = details[subcategory] || {
+                title: 'Detalles',
+                description: 'Información detallada',
+                content: '<p>Información detallada no disponible para esta categoría.</p>'
+            };
+            
+            detailsElement.innerHTML = `
+                <div class="details-header">
+                    <h2 class="details-title">${detail.title}</h2>
+                    <p class="details-description">${detail.description}</p>
+                    <button class="close-button" onclick="this.closest('.subcategory-details').remove()">×</button>
+                </div>
+                ${detail.content}
+            `;
+            
+            contentDiv.appendChild(detailsElement);
         }
         
         // Función para volver al contenido principal
