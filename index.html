@@ -328,36 +328,31 @@
         function showToday() {
             const now = new Date();
             
-            // Formatear el día para que coincida con los datos (agregar "de" entre el día y el mes)
+            // Obtener el día sin cero inicial
             const day = now.getDate();
+            
+            // Array de meses en español
             const months = [
                 "enero", "febrero", "marzo", "abril", "mayo", "junio",
                 "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
             ];
             const month = months[now.getMonth()];
+            
+            // Formatear la fecha sin cero inicial para el día
             const formattedDate = day + " de " + month;
             
-            // Mostrar información de depuración
-            console.log("Fecha actual (formateada):", formattedDate);
-            
-            // Mostrar todas las fechas disponibles para depuración
-            console.log("Fechas en la base de datos:");
-            facts.forEach((fact, index) => {
-                console.log(`  ${index}: ${fact.date}`);
-            });
-            
-            // Intentar encontrar un hecho para hoy
-            const fact = facts.find(f => {
-                const match = f.date.toLowerCase() === formattedDate.toLowerCase();
-                console.log(`Comparando: "${f.date.toLowerCase()}" con "${formattedDate.toLowerCase()}" = ${match}`);
-                return match;
-            });
+            // Buscar el hecho correspondiente
+            let fact = null;
+            for (let i = 0; i < facts.length; i++) {
+                if (facts[i].date === formattedDate) {
+                    fact = facts[i];
+                    break;
+                }
+            }
             
             if (fact) {
-                console.log("Hecho encontrado:", fact.title);
                 displayFact(fact);
             } else {
-                console.log("No se encontró hecho para hoy, mostrando aleatorio");
                 // Si no hay hecho para hoy, mostrar uno aleatorio
                 const randomIndex = Math.floor(Math.random() * facts.length);
                 displayFact(facts[randomIndex]);
