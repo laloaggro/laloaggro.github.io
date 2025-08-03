@@ -1485,21 +1485,27 @@
                 detailsElement.remove();
             }
             
-            // Mostrar mensaje de bienvenida si no está presente
-            const welcomeMessage = document.querySelector('.welcome-message');
-            if (!welcomeMessage) {
-                const welcomeElement = document.createElement('div');
-                welcomeElement.className = 'output';
-                welcomeElement.innerHTML = `
-                    <div>Bienvenido a la Terminal de Historia de la Programación v1.0</div>
-                    <div>Escribe "hoy" para ver el hecho de programación del día</div>
-                    <div>Escribe "aleatorio" para ver un hecho de programación aleatorio</div>
-                    <div>Escribe "catalogo" para ver ideas de proyectos</div>
-                    <div>Escribe "hechos" para buscar en todos los hechos disponibles</div>
-                    <div>Escribe "ayuda" para ver todos los comandos disponibles</div>
-                `;
-                contentDiv.insertBefore(welcomeElement, contentDiv.firstChild);
-            }
+            // Limpiar todos los mensajes excepto el hecho del mes
+            const outputMessages = contentDiv.querySelectorAll('.output');
+            outputMessages.forEach(message => {
+                if (message.id !== 'monthly-fact-container') {
+                    message.remove();
+                }
+            });
+            
+            // Agregar mensaje de bienvenida
+            const welcomeElement = document.createElement('div');
+            welcomeElement.className = 'output';
+            welcomeElement.innerHTML = `
+                <div>Bienvenido a la Terminal de Historia de la Programación v1.0</div>
+                <div>Escribe "hoy" para ver el hecho de programación del día</div>
+                <div>Escribe "aleatorio" para ver un hecho de programación aleatorio</div>
+                <div>Escribe "catalogo" para ver ideas de proyectos</div>
+                <div>Escribe "hechos" para buscar en todos los hechos disponibles</div>
+                <div>Escribe "ayuda" para ver todos los comandos disponibles</div>
+                <div>Escribe "modo" para cambiar entre modo oscuro/claro</div>
+            `;
+            contentDiv.insertBefore(welcomeElement, contentDiv.firstChild);
         }
         
         // Función para cambiar entre modo oscuro y claro
