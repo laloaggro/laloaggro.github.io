@@ -466,6 +466,7 @@
                 <div>&nbsp;&nbsp;aleatorio&nbsp;- Mostrar un hecho de programación aleatorio</div>
                 <div>&nbsp;&nbsp;hechos&nbsp;&nbsp;&nbsp;- Listar todos los hechos disponibles</div>
                 <div>&nbsp;&nbsp;catalogo&nbsp;&nbsp;- Mostrar catálogo de ideas de proyectos</div>
+                <div>&nbsp;&nbsp;catálogo&nbsp;- Mostrar catálogo de ideas de proyectos</div>
                 <div>&nbsp;&nbsp;limpiar&nbsp;&nbsp;- Limpiar la pantalla de la terminal</div>
             `;
             contentDiv.appendChild(helpElement);
@@ -557,6 +558,7 @@
         
         // Mostrar catálogo de ideas de proyectos
         function showCatalog() {
+            // En lugar de borrar todo el contenido, agregamos el catálogo al final
             const catalogElement = document.createElement('div');
             catalogElement.className = 'catalog-menu active';
             catalogElement.innerHTML = `
@@ -566,61 +568,70 @@
                         <div class="category-title">🚀 Proyectos Personales</div>
                         <div class="category-items">
                             <div class="category-item">Portafolio profesional (CV interactivo con proyectos, habilidades y contacto)</div>
-                            <div class="category-item">Blog técnico (usando Jekyll, Hugo o Hexo)</div>
-                            <div class="category-item">Currículum online (diseño minimalista o interactivo)</div>
-                            <div class="category-item">Landing page para marca personal, freelancing o servicios</div>
+                            <div class="category-item">Blog técnico (usando Jekyll, Hugo o Hexo para escribir sobre programación, diseño, etc.)</div>
+                            <div class="category-item">Currículum online (con diseño minimalista o interactivo)</div>
+                            <div class="category-item">Landing page para tu marca personal, freelancing o servicios</div>
                         </div>
                     </div>
                     
                     <div class="category">
                         <div class="category-title">🎨 Creatividad y Diseño</div>
                         <div class="category-items">
-                            <div class="category-item">Galería de arte/diseño (ilustraciones, fotografía o diseños CSS/JS)</div>
+                            <div class="category-item">Galería de arte/diseño (muestra ilustraciones, fotografía o diseños CSS/JS)</div>
                             <div class="category-item">Experimentos web (animaciones con CSS/JS, efectos visuales, shaders)</div>
-                            <div class="category-item">Linktree personalizado (centralizar redes sociales/proyectos)</div>
-                            <div class="category-item">Tutoriales interactivos (demostraciones en JS)</div>
+                            <div class="category-item">Un "Linktree" personalizado (para centralizar tus redes sociales/proyectos)</div>
+                            <div class="category-item">Tutoriales interactivos (ej: cómo funciona un algoritmo con demostraciones en JS)</div>
                         </div>
                     </div>
                     
                     <div class="category">
                         <div class="category-title">🛠 Herramientas Útiles</div>
                         <div class="category-items">
-                            <div class="category-item">Documentación de un proyecto (alternativa a ReadTheDocs)</div>
-                            <div class="category-item">Generador de contraseñas o herramientas simples</div>
+                            <div class="category-item">Documentación de un proyecto (como alternativa a ReadTheDocs)</div>
+                            <div class="category-item">Generador de contraseñas o herramientas simples (calculadoras, conversores)</div>
                             <div class="category-item">Cheatsheets (hojas de referencia para comandos, atajos, frameworks)</div>
-                            <div class="category-item">Lista de recursos (libros, cursos, herramientas recomendadas)</div>
+                            <div class="category-item">Lista de recursos (libros, cursos, herramientas recomendadas sobre un tema)</div>
                         </div>
                     </div>
                     
                     <div class="category">
                         <div class="category-title">🎮 Entretenimiento y Juegos</div>
                         <div class="category-items">
-                            <div class="category-item">Juegos web simples (tres en raya, memoria, mini-RPG con JS)</div>
-                            <div class="category-item">Web de películas/series (reseñar favoritas, estilo Letterboxd)</div>
-                            <div class="category-item">Generador de memes o frases aleatorias</div>
+                            <div class="category-item">Juegos web simples (como un tres en raya, memoria, o un mini-RPG con JS)</div>
+                            <div class="category-item">Web de películas/series (para reseñar tus favoritas, estilo Letterboxd)</div>
+                            <div class="category-item">Generador de memes o de frases aleatorias</div>
                         </div>
                     </div>
                     
                     <div class="category">
                         <div class="category-title">📚 Educación y Comunidad</div>
                         <div class="category-items">
-                            <div class="category-item">Apuntes o resúmenes (cursos, universidad, bootcamps)</div>
-                            <div class="category-item">Traductor básico (lenguajes inventados o jerga técnica)</div>
-                            <div class="category-item">Web colaborativa (grupo de estudio o comunidad)</div>
+                            <div class="category-item">Apuntes o resúmenes (de cursos, universidad, bootcamps)</div>
+                            <div class="category-item">Traductor básico (para lenguajes inventados o jerga técnica)</div>
+                            <div class="category-item">Web colaborativa (para un grupo de estudio o comunidad)</div>
                         </div>
                     </div>
                     
                     <div class="category">
                         <div class="category-title">💡 Ideas Originales</div>
                         <div class="category-items">
-                            <div class="category-item">Máquina del tiempo (linterna mágica con fotos/eventos)</div>
-                            <div class="category-item">Web para enviarte mensajes al futuro (JS y localStorage)</div>
+                            <div class="category-item">Una "máquina del tiempo" (linterna mágica con fotos/eventos de tu vida)</div>
+                            <div class="category-item">Web para enviarte mensajes al futuro (con JavaScript y localStorage)</div>
                         </div>
                     </div>
                 </div>
-                <div class="back-button" onclick="clearTerminal()">← Volver</div>
+                <!-- Removed back button as per requirements -->
             `;
             contentDiv.appendChild(catalogElement);
+        }
+        
+        // Función para volver al contenido principal
+        function goBack() {
+            // Elimina el catálogo del DOM
+            const catalogElement = document.querySelector('.catalog-menu');
+            if (catalogElement) {
+                catalogElement.remove();
+            }
         }
     </script>
 </body>
