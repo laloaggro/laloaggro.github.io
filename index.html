@@ -330,7 +330,11 @@
             
             // Formatear el día para que coincida con los datos (agregar "de" entre el día y el mes)
             const day = now.getDate();
-            const month = now.toLocaleString('es-ES', { month: 'long' });
+            const months = [
+                "enero", "febrero", "marzo", "abril", "mayo", "junio",
+                "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"
+            ];
+            const month = months[now.getMonth()];
             const formattedDate = day + " de " + month;
             
             console.log("Fecha actual:", formattedDate); // Para depuración
