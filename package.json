@@ -1,16 +1,16 @@
 {
-  "name": "programming-history-terminal",
+  "name": "cv-portfolio",
   "version": "1.0.0",
-  "description": "A terminal-style website that displays daily programming facts",
-  "main": "index.html",
+  "private": true,
   "scripts": {
-    "start": "http-server -o",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "concurrently \"npm run servidor\" \"npm run cliente\"",
+    "servidor": "cd page3/server && npm run dev",
+    "cliente": "http-server page3 -p 8080",
+    "instalar": "npm install && cd page3/server && npm install",
+    "limpiar": "rm -rf node_modules package-lock.json && cd page3/server && npm run limpiar"
   },
-  "keywords": ["programming", "terminal", "history", "facts"],
-  "author": "laloaggro",
-  "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
+    "concurrently": "^8.2.1",
     "http-server": "^14.1.1"
   }
 }

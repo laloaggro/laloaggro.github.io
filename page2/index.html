@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terminal de Historia de la Programación</title>
+    <meta name="description" content="Efemérides y hechos históricos de la programación en formato terminal interactivo.">
+    <meta name="keywords" content="programación, historia, terminal, efemérides, informática">
+    <meta name="theme-color" content="#000000">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <canvas id="matrix-bg"></canvas>
+    <div id="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar tema" tabindex="0" role="button">◐</div>
+    <main id="terminal" role="main">
+        <header id="header">
+            <h1>Terminal de Historia de la Programación</h1>
+            <p><strong>Bienvenido</strong>. Escribe <kbd>ayuda</kbd> para ver los comandos disponibles.</p>
+        </header>
+        <nav id="top-bar" aria-label="Barra superior">
+            <button class="back-button" onclick="goHome()" aria-label="Ir al inicio">Inicio</button>
+        </nav>
+        <nav id="navbar" aria-label="Navegación principal">
+            <div class="nav-links">
+                <a href="#" class="nav-link" onclick="showToday(); return false;" aria-label="Hecho de hoy">Hoy</a>
+                <a href="#" class="nav-link" onclick="showRandom(); return false;" aria-label="Hecho aleatorio">Aleatorio</a>
+                <a href="#" class="nav-link" onclick="showAllFacts(); return false;" aria-label="Todos los hechos">Hechos</a>
+                <a href="#" class="nav-link" onclick="toggleCatalogSidebar(); return false;" aria-label="Catálogo de ideas">Catálogo</a>
+            </div>
+        </nav>
+        <section id="content">
+            <div class="output" aria-live="polite">
+                <div><strong>Bienvenido a la Terminal de Historia de la Programación v1.0</strong></div>
+                <div>Escribe <kbd>hoy</kbd> para ver el hecho de programación del día</div>
+                <div>Escribe <kbd>aleatorio</kbd> para ver un hecho de programación aleatorio</div>
+                <div>Escribe <kbd>hechos</kbd> para buscar en todos los hechos disponibles</div>
+                <div>Escribe <kbd>ayuda</kbd> para ver todos los comandos disponibles</div>
+                <div>Escribe <kbd>modo</kbd> para cambiar entre modo oscuro/claro</div>
+            </div>
+            <div class="output" id="monthly-fact-container">
+                <div class="fact-title">Hecho del Mes</div>
+                <div id="monthly-fact-content"></div>
+            </div>
+        </section>
+        <form id="prompt" role="search" autocomplete="off" onsubmit="return false;">
+            <span>&gt;</span>
+            <input type="text" id="command-input" autocomplete="off" aria-label="Escribe un comando" autofocus>
+            <span class="blink">_</span>
+        </form>
+    </main>
+    <aside id="catalog-sidebar" aria-label="Catálogo de ideas">
+        <!-- ...contenido del catálogo... -->
+    </aside>
+    <footer id="footer" aria-label="Pie de página">
+        <small>&copy; 2025 Terminal de Historia de la Programación</small>
+    </footer>
+    <script src="main.js"></script>
+</body>
+</html>
