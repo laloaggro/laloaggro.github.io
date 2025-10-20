@@ -26,7 +26,7 @@ const hechos = [
         contenido: 'Apple Computer fue fundada el 1 de abril de 1976 por Steve Jobs, Steve Wozniak y Ronald Wayne.'
     },
     {
-        fecha: '04-04',
+        fecha: '08-24',
         titulo: 'Lanzamiento de Windows 95',
         contenido: 'Microsoft lanzó Windows 95 el 24 de agosto de 1995, marcando un hito en sistemas operativos con interfaz gráfica.'
     },
@@ -36,7 +36,7 @@ const hechos = [
         contenido: 'Java fue lanzado públicamente el 23 de mayo de 1995 por Sun Microsystems. Su filosofía "Write Once, Run Anywhere" revolucionó el desarrollo.'
     },
     {
-        fecha: '06-07',
+        fecha: '06-29',
         titulo: 'Lanzamiento del iPhone',
         contenido: 'El 29 de junio de 2007, Apple lanzó el primer iPhone, transformando la industria móvil y creando el ecosistema de apps.'
     },
