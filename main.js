@@ -266,7 +266,10 @@ if (commandInput) {
             const contenedor = document.getElementById('content');
             const commandOutput = document.createElement('div');
             commandOutput.className = 'output';
-            commandOutput.innerHTML = `<div style="color: var(--primary-color);">&gt; ${command}</div>`;
+            const commandDiv = document.createElement('div');
+            commandDiv.style.color = 'var(--primary-color)';
+            commandDiv.textContent = `> ${command}`;
+            commandOutput.appendChild(commandDiv);
             contenedor.appendChild(commandOutput);
             
             switch(command) {
@@ -312,7 +315,10 @@ if (commandInput) {
                 default:
                     const errorOutput = document.createElement('div');
                     errorOutput.className = 'output';
-                    errorOutput.innerHTML = `<div style="color: #ff6b6b;">Comando no reconocido: "${command}". Escribe "ayuda" para ver los comandos disponibles.</div>`;
+                    const errorDiv = document.createElement('div');
+                    errorDiv.style.color = '#ff6b6b';
+                    errorDiv.textContent = `Comando no reconocido: "${command}". Escribe "ayuda" para ver los comandos disponibles.`;
+                    errorOutput.appendChild(errorDiv);
                     contenedor.appendChild(errorOutput);
             }
             
