@@ -1,158 +1,172 @@
+import Link from 'next/link';
+
 export default function About() {
-  const experience = [
-    {
-      company: "FIF Corporativo Regional — Banco Falabella",
-      position: "Líder en Gestión del Cambio y Aseguramiento de Despliegues",
-      period: "Ene 2022 – Feb 2025",
-      achievements: [
-        "Gestioné más de 1.000 cambios anuales en infraestructura crítica para operaciones en 7 países latinoamericanos",
-        "Construí un calendario de despliegue centralizado en JIRA con detección automática de conflictos, reduciendo superposiciones en un 70%",
-        "Logré cumplimiento del 100% en auditorías regulatorias (CMF, PCI-DSS, ISO 27001)",
-        "Definí y monitoreé KPIs de éxito mediante dashboards en tiempo real"
-      ]
-    },
-    {
-      company: "Banco Falabella (CMR Chile)",
-      position: "Analista Senior – Plataformas de Producción y Gestión del Cambio",
-      period: "Oct 2016 – Dic 2021",
-      achievements: [
-        "Automatizé ~50% de los cambios estándar usando pipelines CI/CD, reduciendo tiempos de aprobación de 48h a 4h",
-        "Integré verificaciones automáticas de pre-despliegue, reduciendo errores humanos en un 60%",
-        "Garanticé estabilidad y seguridad de sistemas críticos (Banca Central, CMR, APIs de Pagos)"
-      ]
-    },
-    {
-      company: "CMR Falabella",
-      position: "Analista de Control de Calidad",
-      period: "May 2014 – Sep 2016",
-      achievements: [
-        "Implementé Control Management en el 90% de los sistemas de la división",
-        "Mejoré la trazabilidad de releases y preparación para auditorías"
-      ]
-    }
-  ];
-
-  const education = [
-    {
-      degree: "Ingeniería en Sistemas Multimedia e Internet",
-      institution: "Instituto Profesional La Araucana",
-      period: "2009–2013"
-    },
-    {
-      degree: "Ingeniería Civil en Informática (2 años completados)",
-      institution: "Universidad Tecnológica de Chile INACAP",
-      period: "2006–2008"
-    }
-  ];
-
-  const certifications = [
-    {
-      name: "ITIL 4 Foundation",
-      issuer: "Axelos"
-    },
-    {
-      name: "Scrum Foundation Professional Certificate (SFPC)",
-      issuer: ""
-    }
-  ];
-
   return (
-    <div className="container mx-auto px-4 py-12">
-      <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold text-gray-900 mb-8 text-center">Sobre mí</h1>
-        
-        <div className="bg-white rounded-lg shadow-md p-8 mb-12">
-          <div className="flex flex-col md:flex-row gap-8 items-center">
-            <div className="flex-shrink-0">
-              <div className="bg-gray-200 border-2 border-dashed rounded-xl w-48 h-48" />
-            </div>
-            <div>
-              <h2 className="text-2xl font-bold text-blue-600 mb-4">Mauricio Eduardo Garay Veas</h2>
-              <p className="text-gray-600 mb-4">
-                Soy un profesional autodidacta con más de 12 años de experiencia en el campo de la tecnología, 
-                especializado en Gestión del Cambio, DevOps y Transformación Digital en entornos financieros altamente regulados.
-              </p>
-              <p className="text-gray-600 mb-4">
-                A lo largo de mi carrera, he tenido la oportunidad de liderar iniciativas críticas en organizaciones 
-                como Banco Falabella, donde he podido aplicar mis conocimientos para reducir riesgos operativos, 
-                garantizar el cumplimiento normativo y acelerar la entrega de soluciones tecnológicas.
-              </p>
-              <p className="text-gray-600">
-                Mi enfoque se centra en construir sistemas resilientes, habilitar la productividad de los desarrolladores 
-                y promover la mejora continua en equipos multifuncionales.
-              </p>
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 consulting-section">
+        <div className="consulting-container">
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl font-medium mb-6">Sobre mí</h1>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Especialista en DevOps, Gestión del Cambio y Transformación Digital con más de 15 años 
+              de experiencia en entornos financieros altamente regulados.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* About Content */}
+      <section className="py-16 bg-gray-50">
+        <div className="consulting-container">
+          <div className="max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+              <div className="lg:col-span-2">
+                <div className="consulting-card p-8">
+                  <h2 className="text-2xl font-semibold mb-6">Mi Trayectoria</h2>
+                  <div className="space-y-6 text-gray-600">
+                    <p>
+                      Soy un profesional autodidacta con más de 15 años de experiencia en el sector tecnológico, 
+                      especializado en DevOps, Gestión del Cambio y Transformación Digital. A lo largo de mi carrera, 
+                      he trabajado con organizaciones financieras y altamente reguladas, ayudándolas a modernizar 
+                      sus procesos tecnológicos y adaptarse a los desafíos del entorno digital actual.
+                    </p>
+                    <p>
+                      Mi enfoque combina conocimientos técnicos avanzados con una comprensión profunda de las 
+                      necesidades organizacionales. He liderado múltiples iniciativas de transformación digital 
+                      que han permitido a mis clientes mejorar su eficiencia operativa, reducir costos y aumentar 
+                      su capacidad de respuesta ante los cambios del mercado.
+                    </p>
+                    <p>
+                      Como defensor de las mejores prácticas en ingeniería de software y operaciones, he 
+                      implementado soluciones DevOps que han acelerado los ciclos de entrega de software, 
+                      mejorado la calidad del producto y fortalecido la colaboración entre equipos de 
+                      desarrollo y operaciones.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              
+              <div>
+                <div className="consulting-card p-6 mb-8">
+                  <h3 className="text-xl font-semibold mb-4">Especialidades</h3>
+                  <ul className="space-y-3">
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3"></div>
+                      <span className="text-gray-700">DevOps & CI/CD</span>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3"></div>
+                      <span className="text-gray-700">Cloud Architecture</span>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3"></div>
+                      <span className="text-gray-700">Change Management</span>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3"></div>
+                      <span className="text-gray-700">Digital Transformation</span>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3"></div>
+                      <span className="text-gray-700">Microservices</span>
+                    </li>
+                    <li className="flex items-start">
+                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3"></div>
+                      <span className="text-gray-700">Observability</span>
+                    </li>
+                  </ul>
+                </div>
+                
+                <div className="consulting-card p-6">
+                  <h3 className="text-xl font-semibold mb-4">Certificaciones</h3>
+                  <ul className="space-y-3 text-gray-600">
+                    <li className="border-b border-gray-100 pb-3">AWS Certified Solutions Architect</li>
+                    <li className="border-b border-gray-100 pb-3">Certified Kubernetes Administrator</li>
+                    <li className="border-b border-gray-100 pb-3">ITIL Foundation</li>
+                    <li className="pb-3">Scrum Master Certified</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      </section>
 
-        <section className="mb-12">
-          <h2 className="text-3xl font-bold text-blue-600 mb-6">Experiencia Profesional</h2>
-          <div className="space-y-8">
-            {experience.map((job, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md p-6 border border-gray-100">
-                <div className="flex flex-wrap justify-between items-start mb-3">
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-900">{job.company}</h3>
-                    <p className="text-blue-600 font-semibold">{job.position}</p>
-                  </div>
-                  <span className="text-gray-500 text-sm bg-gray-100 px-3 py-1 rounded-full">
-                    {job.period}
-                  </span>
+      {/* Experience */}
+      <section className="consulting-section">
+        <div className="consulting-container">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl font-medium text-center mb-16">Experiencia Profesional</h2>
+            
+            <div className="space-y-12">
+              {/* Experience Item 1 */}
+              <div className="consulting-card p-8">
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                  <h3 className="text-xl font-semibold">Consultor Senior DevOps & Transformación Digital</h3>
+                  <span className="text-blue-600 font-medium mt-2 md:mt-0">2020 - Presente</span>
                 </div>
-                <ul className="mt-4 space-y-2">
-                  {job.achievements.map((achievement, achievementIndex) => (
-                    <li key={achievementIndex} className="flex items-start">
-                      <div className="flex-shrink-0 h-5 w-5 text-blue-600 mt-0.5">•</div>
-                      <p className="ml-2 text-gray-600">{achievement}</p>
-                    </li>
-                  ))}
+                <p className="text-gray-600 mb-4">
+                  Lidero iniciativas de transformación digital y DevOps para clientes en el sector financiero.
+                </p>
+                <ul className="list-disc list-inside space-y-2 text-gray-600">
+                  <li>Diseño e implementación de pipelines CI/CD para entornos altamente regulados</li>
+                  <li>Modernización de arquitecturas legacy hacia soluciones cloud-native</li>
+                  <li>Implementación de prácticas de observabilidad y monitoreo avanzado</li>
+                  <li>Gestión del cambio en organizaciones con múltiples stakeholders</li>
                 </ul>
               </div>
-            ))}
+              
+              {/* Experience Item 2 */}
+              <div className="consulting-card p-8">
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                  <h3 className="text-xl font-semibold">Líder de Equipo DevOps</h3>
+                  <span className="text-blue-600 font-medium mt-2 md:mt-0">2016 - 2020</span>
+                </div>
+                <p className="text-gray-600 mb-4">
+                  Responsable del diseño e implementación de la estrategia DevOps para una organización financiera.
+                </p>
+                <ul className="list-disc list-inside space-y-2 text-gray-600">
+                  <li>Implementación de infraestructura como código (IaC) con Terraform</li>
+                  <li>Automatización de procesos de despliegue y configuración</li>
+                  <li>Creación de centros de excelencia DevOps</li>
+                  <li>Capacitación de equipos en prácticas DevOps y cultura de colaboración</li>
+                </ul>
+              </div>
+              
+              {/* Experience Item 3 */}
+              <div className="consulting-card p-8">
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                  <h3 className="text-xl font-semibold">Ingeniero de Software Senior</h3>
+                  <span className="text-blue-600 font-medium mt-2 md:mt-0">2010 - 2016</span>
+                </div>
+                <p className="text-gray-600 mb-4">
+                  Desarrollo de aplicaciones empresariales y sistemas distribuidos en entornos Java y .NET.
+                </p>
+                <ul className="list-disc list-inside space-y-2 text-gray-600">
+                  <li>Desarrollo de aplicaciones web y servicios backend</li>
+                  <li>Implementación de arquitecturas de microservicios</li>
+                  <li>Optimización de bases de datos y consultas complejas</li>
+                  <li>Colaboración con equipos de QA y operaciones</li>
+                </ul>
+              </div>
+            </div>
           </div>
-        </section>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-          <section className="bg-blue-50 rounded-lg p-6">
-            <h2 className="text-2xl font-bold text-blue-600 mb-4">Formación Académica</h2>
-            <div className="space-y-6">
-              {education.map((edu, index) => (
-                <div key={index}>
-                  <h3 className="font-semibold text-lg">{edu.degree}</h3>
-                  <p className="text-blue-600">{edu.institution}</p>
-                  <p className="text-gray-600 text-sm">{edu.period}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section className="bg-gray-50 rounded-lg p-6">
-            <h2 className="text-2xl font-bold text-blue-600 mb-4">Certificaciones</h2>
-            <div className="space-y-6">
-              {certifications.map((cert, index) => (
-                <div key={index}>
-                  <h3 className="font-semibold text-lg">{cert.name}</h3>
-                  {cert.issuer && <p className="text-blue-600">{cert.issuer}</p>}
-                </div>
-              ))}
-            </div>
-          </section>
         </div>
+      </section>
 
-        <div className="bg-white rounded-lg shadow-md p-8 text-center">
-          <h2 className="text-2xl font-bold text-blue-600 mb-4">¿Interesado en trabajar juntos?</h2>
-          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
-            Si estás buscando un profesional con experiencia en DevOps, arquitectura de microservicios 
-            y gestión de cambios en entornos regulados, me encantaría hablar contigo.
+      {/* CTA Section */}
+      <section className="py-20 bg-blue-700 text-white">
+        <div className="consulting-container text-center">
+          <h2 className="text-3xl md:text-4xl font-medium mb-6">¿Interesado en trabajar conmigo?</h2>
+          <p className="text-blue-100 max-w-2xl mx-auto mb-8 text-lg">
+            Agenda una consulta gratuita de 30 minutos para discutir tus necesidades tecnológicas.
           </p>
-          <a 
-            href="mailto:mauriciogarayveas@gmail.com" 
-            className="inline-block bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg hover:bg-blue-700 transition duration-300"
-          >
-            Contáctame
-          </a>
+          <Link href="/contact" className="consulting-button bg-white text-blue-700 hover:bg-gray-100 focus:ring-white">
+            Agenda tu Consulta
+          </Link>
         </div>
-      </div>
+      </section>
     </div>
   );
 }

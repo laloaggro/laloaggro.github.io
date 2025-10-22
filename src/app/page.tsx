@@ -1,127 +1,242 @@
 import Link from 'next/link';
+import { FiGithub, FiLinkedin, FiTwitter } from 'react-icons/fi';
+import { projects } from '@/data/projects';
 
 export default function Home() {
+  // Filtrar proyectos destacados
+  const featuredProjects = projects.filter(project => project.featured).slice(0, 3);
+  
   return (
-    <div className="container mx-auto px-4 py-12">
+    <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="text-center py-16 md:py-24">
-        <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-          Mauricio Eduardo <span className="text-blue-600">Garay Veas</span>
-        </h1>
-        <p className="text-xl md:text-2xl text-gray-600 mb-10 max-w-3xl mx-auto">
-          Especialista Senior en Gestión del Cambio, DevOps & Líder en Transformación Digital
-        </p>
-        <div className="flex flex-col sm:flex-row justify-center gap-4">
-          <Link 
-            href="/portfolio" 
-            className="bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg hover:bg-blue-700 transition duration-300 text-lg"
-          >
-            Ver Mi Trabajo
-          </Link>
-          <Link 
-            href="/contact" 
-            className="border-2 border-blue-600 text-blue-600 font-semibold py-3 px-8 rounded-lg hover:bg-blue-50 transition duration-300 text-lg"
-          >
-            Contáctame
-          </Link>
-        </div>
-      </section>
-
-      {/* Key Achievements Section */}
-      <section className="py-16">
-        <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">Logros Clave</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 text-center">
-            <div className="text-4xl font-bold text-blue-600 mb-2">100%</div>
-            <div className="text-gray-600">Cumplimiento en Auditorías</div>
-            <div className="text-sm text-gray-500 mt-1">(CMF, PCI-DSS, ISO 27001)</div>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 text-center">
-            <div className="text-4xl font-bold text-blue-600 mb-2">70%</div>
-            <div className="text-gray-600">Reducción de Conflictos</div>
-            <div className="text-sm text-gray-500 mt-1">en Despliegues</div>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 text-center">
-            <div className="text-4xl font-bold text-blue-600 mb-2">1000+</div>
-            <div className="text-gray-600">Cambios Gestionados</div>
-            <div className="text-sm text-gray-500 mt-1">por Año</div>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100 text-center">
-            <div className="text-4xl font-bold text-blue-600 mb-2">7</div>
-            <div className="text-gray-600">Países Alcanzados</div>
-            <div className="text-sm text-gray-500 mt-1">en Latinoamérica</div>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Project */}
-      <section className="py-16 bg-gray-50 rounded-xl px-6">
-        <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">Proyecto Destacado</h2>
-        <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
-          <div className="p-6 md:p-8">
-            <h3 className="text-2xl font-bold mb-3 text-blue-600">Flores Victoria - Plataforma E-commerce</h3>
-            <p className="text-gray-600 mb-4">
-              Arquitecté e implementé una plataforma de comercio electrónico nativa en la nube con más de 13 microservicios, 
-              lista para producción con stack completo de observabilidad.
-            </p>
-            <ul className="list-disc list-inside text-gray-600 mb-4 space-y-2">
-              <li>Arquitectura de microservicios con Docker y Kubernetes</li>
-              <li>Stack de observabilidad con Prometheus, Grafana y ELK</li>
-              <li>CI/CD pipelines con GitHub Actions</li>
-              <li>Seguridad con JWT, TLS y gestión segura de secretos</li>
-            </ul>
-            <div className="flex flex-wrap gap-2 mb-6">
-              <span className="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Docker</span>
-              <span className="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Kubernetes</span>
-              <span className="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Microservices</span>
-              <span className="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Prometheus</span>
-              <span className="bg-blue-100 text-blue-800 text-sm px-3 py-1 rounded-full">Grafana</span>
+      <section className="min-h-screen flex items-center justify-center px-4 pt-16 consulting-section sparse">
+        <div className="max-w-7xl mx-auto consulting-container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8 fade-in">
+              <div className="space-y-6">
+                <span className="badge-primary uppercase tracking-wider">
+                  Consultoría Tecnológica
+                </span>
+                <h1 className="display-hero text-4xl md:text-5xl lg:text-6xl">
+                  Mauricio Garay
+                </h1>
+                <p className="text-xl md:text-2xl text-muted max-w-2xl">
+                  Especialista en DevOps, Gestión del Cambio y Transformación Digital
+                </p>
+                <p className="body-text text-base md:text-lg text-muted max-w-2xl">
+                  Transformo equipos y procesos a través de automatización, arquitecturas cloud-native 
+                  y prácticas DevOps en organizaciones de alto impacto.
+                </p>
+              </div>
+              
+              <div className="pt-6 flex flex-col sm:flex-row gap-4">
+                <Link 
+                  href="/portfolio" 
+                  className="consulting-button-primary consulting-button-large"
+                >
+                  Ver Proyectos
+                </Link>
+                <Link 
+                  href="/contact" 
+                  className="consulting-button-secondary consulting-button-large"
+                >
+                  Agenda una Consulta
+                </Link>
+              </div>
+              
+              <div className="flex items-center space-x-4 pt-8">
+                <span className="text-muted caption-text">Sígueme en:</span>
+                <div className="flex space-x-4">
+                  <a 
+                    href="https://github.com/laloaggro" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-muted hover:text-accent transition-colors"
+                    aria-label="GitHub"
+                  >
+                    <FiGithub size={24} />
+                  </a>
+                  <a 
+                    href="https://linkedin.com/in/mauricio-garay-veas" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-muted hover:text-accent transition-colors"
+                    aria-label="LinkedIn"
+                  >
+                    <FiLinkedin size={24} />
+                  </a>
+                  <a 
+                    href="#" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-muted hover:text-accent transition-colors"
+                    aria-label="Twitter"
+                  >
+                    <FiTwitter size={24} />
+                  </a>
+                </div>
+              </div>
             </div>
-            <div className="flex justify-between items-center">
-              <Link 
-                href="/portfolio/flores-victoria" 
-                className="text-blue-600 font-semibold hover:underline"
-              >
-                Ver detalles técnicos →
-              </Link>
-              <a 
-                href="https://github.com/laloaggro/Flores-Victoria-" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-gray-500 hover:text-blue-600 flex items-center"
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
-                  <path d="M9 18c-4.51 2-5-2-7-2"/>
+            
+            <div className="grid grid-cols-2 gap-4 fade-in-delay-2">
+              <div className="rounded-2xl bg-gradient-to-br from-accent to-blue-800 p-8 text-white shadow-soft">
+                <h3 className="text-3xl font-bold mb-2">+15</h3>
+                <p className="caption-text">Años de Experiencia</p>
+              </div>
+              <div className="rounded-2xl bg-white border border-border p-8 shadow-soft">
+                <h3 className="text-3xl font-bold text-accent mb-2">+50</h3>
+                <p className="caption-text text-muted">Proyectos Entregados</p>
+              </div>
+              <div className="rounded-2xl bg-white border border-border p-8 shadow-soft">
+                <h3 className="text-3xl font-bold text-accent mb-2">100%</h3>
+                <p className="caption-text text-muted">Clientes Satisfechos</p>
+              </div>
+              <div className="rounded-2xl bg-gradient-to-br from-success to-green-600 p-8 text-white shadow-soft">
+                <h3 className="text-3xl font-bold mb-2">24/7</h3>
+                <p className="caption-text">Soporte</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Preview */}
+      <section className="consulting-section bg-gray-50">
+        <div className="consulting-container">
+          <div className="text-center max-w-3xl mx-auto mb-16 fade-in">
+            <h2 className="heading-section text-3xl md:text-4xl mb-4">Servicios de Consultoría</h2>
+            <p className="body-text text-lg text-muted max-w-2xl mx-auto">
+              Ofrezco soluciones especializadas en DevOps, Transformación Digital y Gestión del Cambio 
+              para organizaciones financieras y altamente reguladas.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="feature-card fade-in-delay-1">
+              <div className="feature-icon-primary">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                 </svg>
-                <span className="ml-1">GitHub</span>
-              </a>
+              </div>
+              <h3 className="text-xl font-semibold mb-3">DevOps & Cloud</h3>
+              <p className="body-text text-muted mb-4">
+                Automatización de pipelines, arquitecturas cloud-native y optimización de infraestructura.
+              </p>
+              <Link href="/services#devops" className="text-accent font-medium text-sm link-hover">
+                Saber más →
+              </Link>
+            </div>
+            
+            <div className="feature-card fade-in-delay-2">
+              <div className="feature-icon-primary">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Transformación Digital</h3>
+              <p className="body-text text-muted mb-4">
+                Estrategias de modernización tecnológica adaptadas a entornos altamente regulados.
+              </p>
+              <Link href="/services#transformation" className="text-accent font-medium text-sm link-hover">
+                Saber más →
+              </Link>
+            </div>
+            
+            <div className="feature-card fade-in-delay-3">
+              <div className="feature-icon-primary">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-semibold mb-3">Gestión del Cambio</h3>
+              <p className="body-text text-muted mb-4">
+                Frameworks probados para implementar cambios tecnológicos en organizaciones complejas.
+              </p>
+              <Link href="/services#change-management" className="text-accent font-medium text-sm link-hover">
+                Saber más →
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Key Skills Section */}
-      <section className="py-16">
-        <h2 className="text-3xl font-bold text-center mb-12 text-gray-900">Habilidades Clave</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100">
-            <h3 className="text-xl font-semibold mb-3 text-blue-600">DevOps & SRE</h3>
-            <p className="text-gray-600">
-              CI/CD, Docker, Kubernetes, Terraform, Ansible, y prácticas SRE para entornos de alta disponibilidad.
+      {/* Featured Projects */}
+      <section className="consulting-section bg-white">
+        <div className="consulting-container">
+          <div className="text-center max-w-3xl mx-auto mb-16 fade-in">
+            <h2 className="heading-section text-3xl md:text-4xl mb-4">Proyectos Destacados</h2>
+            <p className="body-text text-lg text-muted max-w-2xl mx-auto">
+              Soluciones tecnológicas innovadoras que han transformado organizaciones complejas.
             </p>
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100">
-            <h3 className="text-xl font-semibold mb-3 text-blue-600">Gestión del Cambio</h3>
-            <p className="text-gray-600">
-              ITIL v4, JIRA, ServiceNow, CAB orchestration, y auditorías de cumplimiento (CMF, PCI-DSS, ISO 27001).
-            </p>
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {featuredProjects.map((project, index) => (
+              <div key={project.id} className="feature-card fade-in-delay-{index+1}">
+                <div className="flex justify-between items-start mb-4">
+                  <h3 className="text-xl font-semibold">{project.title}</h3>
+                  <span className="badge-secondary">{project.year}</span>
+                </div>
+                <p className="body-text text-muted mb-4">{project.description}</p>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.technologies.slice(0, 4).map((tech, index) => (
+                    <span key={index} className="badge-outline text-xs">
+                      {tech}
+                    </span>
+                  ))}
+                  {project.technologies.length > 4 && (
+                    <span className="badge-outline text-xs">
+                      +{project.technologies.length - 4}
+                    </span>
+                  )}
+                </div>
+                <div className="flex space-x-3">
+                  <Link 
+                    href={`/portfolio/${project.id}`} 
+                    className="text-accent font-medium text-sm link-hover"
+                  >
+                    Ver detalles →
+                  </Link>
+                  {project.githubUrl && (
+                    <a 
+                      href={project.githubUrl} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="text-accent font-medium text-sm link-hover"
+                    >
+                      Código fuente →
+                    </a>
+                  )}
+                </div>
+              </div>
+            ))}
           </div>
-          <div className="bg-white p-6 rounded-lg shadow-md border border-gray-100">
-            <h3 className="text-xl font-semibold mb-3 text-blue-600">Arquitectura Cloud</h3>
-            <p className="text-gray-600">
-              Diseño e implementación de soluciones cloud-native con microservicios y arquitecturas resilientes.
-            </p>
+          
+          <div className="text-center mt-12">
+            <Link 
+              href="/portfolio" 
+              className="consulting-button-ghost consulting-button-large"
+            >
+              Ver todos los proyectos
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-accent to-blue-800 text-white">
+        <div className="consulting-container text-center">
+          <h2 className="display-hero text-3xl md:text-4xl mb-6">¿Listo para transformar tu organización?</h2>
+          <p className="body-text text-blue-100 max-w-2xl mx-auto mb-8 text-lg">
+            Agenda una consulta gratuita de 30 minutos para discutir tus desafíos tecnológicos.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/contact" className="consulting-button bg-white text-accent hover:bg-gray-100 focus:ring-white consulting-button-large">
+              Agenda tu Consulta
+            </Link>
+            <Link href="/portfolio" className="consulting-button bg-transparent border border-white text-white hover:bg-white/10 focus:ring-white consulting-button-large">
+              Ver Casos de Éxito
+            </Link>
           </div>
         </div>
       </section>
