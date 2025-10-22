@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
-import SearchBar from '@/components/SearchBar';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -43,20 +42,19 @@ export default function Header() {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-1">
             {navItems.map((item) => (
               <Link 
                 key={item.name}
                 href={item.href}
-                className="text-sm font-medium text-foreground hover:text-accent transition-colors link-hover"
+                className="px-3 py-2 text-sm font-medium text-foreground hover:text-accent transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
               >
                 {item.name}
               </Link>
             ))}
-            <SearchBar />
             <Link 
               href="/contact" 
-              className="consulting-button-primary text-sm transform transition-all duration-300 hover:-translate-y-0.5"
+              className="consulting-button-primary text-sm ml-2"
             >
               Agenda una Consulta
             </Link>
@@ -64,7 +62,6 @@ export default function Header() {
 
           {/* Mobile menu button */}
           <div className="flex items-center space-x-4 md:hidden">
-            <SearchBar />
             <button 
               className="text-foreground hover:text-accent transition-colors"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -82,12 +79,12 @@ export default function Header() {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="md:hidden py-4 border-t border-border mt-2 animate-fade-in-down">
-            <div className="flex flex-col space-y-4">
+            <div className="flex flex-col space-y-2">
               {navItems.map((item) => (
                 <Link 
                   key={item.name}
                   href={item.href}
-                  className="text-sm font-medium text-foreground hover:text-accent transition-colors py-2"
+                  className="px-3 py-2 text-sm font-medium text-foreground hover:text-accent transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.name}
@@ -95,7 +92,7 @@ export default function Header() {
               ))}
               <Link 
                 href="/contact" 
-                className="consulting-button-primary text-sm w-full text-center py-2"
+                className="consulting-button-primary text-sm w-full text-center mt-2 py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Agenda una Consulta

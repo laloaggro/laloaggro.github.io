@@ -1,71 +1,36 @@
-# Sitio Web Personal - Mauricio Garay
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Sitio web profesional de Mauricio Garay, especialista en DevOps, Gestión del Cambio y Transformación Digital.
+## Getting Started
 
-## Descripción
+First, run the development server:
 
-Este sitio web presenta los servicios, proyectos y experiencia profesional de Mauricio Garay como consultor tecnológico. El sitio está construido con tecnologías modernas para ofrecer una experiencia de usuario óptima.
-
-## Tecnologías Utilizadas
-
-- **Next.js 14** - Framework de React para aplicaciones web
-- **TypeScript** - Tipado estático para JavaScript
-- **Tailwind CSS** - Framework de CSS utility-first
-- **React Icons** - Biblioteca de iconos para React
-
-## Estructura del Proyecto
-
-```
-src/
-├── app/                 # Páginas de la aplicación
-│   ├── about/          # Página "Sobre mí"
-│   ├── blog/           # Sección de blog
-│   ├── contact/        # Página de contacto
-│   ├── portfolio/      # Portafolio de proyectos
-│   ├── services/       # Página de servicios
-│   ├── layout.tsx      # Layout principal
-│   └── page.tsx        # Página de inicio
-├── components/         # Componentes reutilizables
-├── data/              # Datos estáticos
-└── styles/            # Estilos globales
-```
-
-## Características
-
-- Diseño responsive completamente adaptable
-- Modo claro/oscuro con persistencia
-- Animaciones y transiciones suaves
-- Optimizado para SEO
-- Accesible y semántico
-- Navegación intuitiva
-
-## Instalación
-
-1. Clonar el repositorio:
-```bash
-git clone https://github.com/laloaggro/laloaggro.github.io.git
-```
-
-2. Instalar dependencias:
-```bash
-npm install
-```
-
-3. Iniciar el servidor de desarrollo:
 ```bash
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-4. Abrir [http://localhost:3000](http://localhost:3000) en el navegador.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Despliegue
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-El sitio está configurado para desplegarse fácilmente en Vercel, la plataforma recomendada para aplicaciones Next.js.
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Contribuciones
+## Learn More
 
-Este proyecto es personal y no acepta contribuciones externas. Sin embargo, si encuentras algún problema, puedes abrir un issue.
+To learn more about Next.js, take a look at the following resources:
 
-## Licencia
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-Este proyecto es propiedad de Mauricio Garay y no puede ser utilizado sin permiso explícito.
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

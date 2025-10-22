@@ -4,24 +4,24 @@ export default function BlogPreview() {
   const posts = [
     {
       id: 1,
-      title: 'Los 5 Principios Fundamentales de la Gestión del Cambio Tecnológico',
-      excerpt: 'Descubre cómo aplicar principios comprobados para asegurar la adopción exitosa de nuevas tecnologías en tu organización.',
-      date: '15 de Mayo, 2023',
-      readTime: '5 min lectura'
+      title: 'Implementando DevOps en Entornos Regulados',
+      excerpt: 'Descubre cómo aplicar prácticas DevOps en industrias altamente reguladas sin comprometer el cumplimiento.',
+      date: '2023-10-15',
+      readTime: '5 min'
     },
     {
       id: 2,
-      title: 'DevOps en Entornos Altamente Regulados',
-      excerpt: 'Estrategias para implementar prácticas DevOps en industrias financieras y de salud sin comprometer el cumplimiento.',
-      date: '3 de Abril, 2023',
-      readTime: '8 min lectura'
+      title: 'Gestión del Cambio en Transformaciones Digitales',
+      excerpt: 'Estrategias probadas para gestionar el cambio humano durante procesos de transformación digital.',
+      date: '2023-09-22',
+      readTime: '7 min'
     },
     {
       id: 3,
-      title: 'La Importancia del Liderazgo en la Transformación Digital',
-      excerpt: 'Cómo los líderes pueden guiar a sus equipos durante procesos complejos de transformación tecnológica.',
-      date: '22 de Marzo, 2023',
-      readTime: '6 min lectura'
+      title: 'Arquitecturas Cloud-Native para Finanzas',
+      excerpt: 'Cómo diseñar arquitecturas cloud-native seguras y escalables para instituciones financieras.',
+      date: '2023-08-30',
+      readTime: '6 min'
     }
   ];
 
@@ -31,7 +31,7 @@ export default function BlogPreview() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="heading-section text-3xl md:text-4xl mb-4">Últimos Artículos</h2>
           <p className="body-text text-lg text-muted max-w-2xl mx-auto">
-            Insights y conocimientos sobre DevOps, Gestión del Cambio y Transformación Digital.
+            Insights y conocimientos sobre DevOps, gestión del cambio y transformación digital.
           </p>
         </div>
         
@@ -39,16 +39,13 @@ export default function BlogPreview() {
           {posts.map((post) => (
             <div key={post.id} className="feature-card transform transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
               <div className="p-6">
-                <div className="flex justify-between items-center mb-3">
+                <div className="flex justify-between items-center mb-4">
                   <span className="caption-text text-muted">{post.date}</span>
                   <span className="caption-text text-muted">{post.readTime}</span>
                 </div>
                 <h3 className="text-xl font-semibold mb-3">{post.title}</h3>
                 <p className="body-text text-muted mb-4">{post.excerpt}</p>
-                <Link 
-                  href={`/blog/${post.id}`} 
-                  className="text-accent font-medium text-sm link-hover"
-                >
+                <Link href={`/blog/${post.id}`} className="text-accent font-medium text-sm link-hover">
                   Leer más →
                 </Link>
               </div>

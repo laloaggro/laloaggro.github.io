@@ -2,37 +2,46 @@ export const projects = [
   {
     id: 'banco-digital',
     title: 'Transformación Digital Bancaria',
-    description: 'Implementación de arquitectura cloud-native para banco regional, reduciendo costos operativos en un 40%.',
+    description: 'Implementación de arquitectura cloud-native para banco regional, reduciendo tiempos de despliegue en un 85%.',
     year: '2023',
-    technologies: ['AWS', 'Kubernetes', 'Terraform', 'Docker', 'CI/CD'],
+    technologies: ['AWS', 'Kubernetes', 'Terraform', 'Docker', 'Node.js', 'React'],
     featured: true,
     page: '/portfolio/banco-digital'
   },
   {
-    id: 'seguros-modernizacion',
-    title: 'Modernización de Plataforma de Seguros',
-    description: 'Migración de infraestructura legacy a microservicios con enfoque DevOps, mejorando tiempos de despliegue en un 85%.',
+    id: 'finanzas-devops',
+    title: 'Pipeline DevOps Finanzas',
+    description: 'Automatización completa del ciclo de desarrollo para empresa fintech, mejorando la calidad del software.',
     year: '2022',
-    technologies: ['Azure', 'Docker', 'Jenkins', 'React', 'Node.js'],
+    technologies: ['Azure DevOps', 'Jenkins', 'Docker', 'Python', 'Terraform'],
     featured: true,
-    page: '/portfolio/seguros-modernizacion'
+    page: '/portfolio/finanzas-devops'
   },
   {
-    id: 'retail-omnichannel',
-    title: 'Plataforma Omnichannel Retail',
-    description: 'Desarrollo de plataforma de comercio electrónico con integración de canales físicos y digitales.',
-    year: '2023',
-    technologies: ['GCP', 'Kubernetes', 'MongoDB', 'React', 'Next.js'],
-    featured: true,
-    page: '/portfolio/retail-omnichannel'
-  },
-  {
-    id: 'gobierno-digital',
-    title: 'Portal de Servicios Gubernamentales',
-    description: 'Implementación de portal digital para servicios ciudadanos con enfoque en accesibilidad y seguridad.',
+    id: 'seguros-cambio',
+    title: 'Gestión del Cambio Seguros',
+    description: 'Implementación de framework de cambio para aseguradora, logrando adopción del 95% en equipos técnicos.',
     year: '2021',
-    technologies: ['AWS', 'Docker', 'PostgreSQL', 'Vue.js', 'Python'],
+    technologies: ['Change Management', 'Agile', 'Scrum', 'Training'],
+    featured: true,
+    page: '/portfolio/seguros-cambio'
+  },
+  {
+    id: 'retail-cloud',
+    title: 'Migración Retail a Cloud',
+    description: 'Migración de infraestructura legacy a arquitectura cloud para cadena de retail.',
+    year: '2020',
+    technologies: ['Google Cloud', 'Kubernetes', 'Microservices', 'MongoDB'],
     featured: false,
-    page: '/portfolio/gobierno-digital'
+    page: '/portfolio/retail-cloud'
+  },
+  {
+    id: 'salud-agil',
+    title: 'Agilización Procesos Salud',
+    description: 'Implementación de prácticas ágiles en organización de salud pública.',
+    year: '2019',
+    technologies: ['Scrum', 'Kanban', 'Lean', 'Training'],
+    featured: false,
+    page: '/portfolio/salud-agil'
   }
 ];

@@ -42,9 +42,9 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="border-t border-border py-16 px-4 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+    <footer className="border-t border-border py-16 px-4 bg-gradient-to-r from-gray-50 to-blue-50 dark:from-gray-900 dark:to-gray-900">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
               <div className="w-3 h-3 bg-accent rounded-full animate-pulse"></div>
@@ -59,7 +59,7 @@ export default function Footer() {
             </p>
             <Link 
               href="/contact" 
-              className="consulting-button-primary text-sm transform transition-all duration-300 hover:-translate-y-0.5"
+              className="consulting-button-primary text-sm"
             >
               Agenda una Consulta
             </Link>
@@ -78,16 +78,6 @@ export default function Footer() {
                   </Link>
                 </li>
               ))}
-            </ul>
-          </div>
-          
-          <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider text-muted mb-4">Servicios</h4>
-            <ul className="space-y-3">
-              <li><Link href="/services#devops" className="body-text text-foreground hover:text-accent transition-colors link-hover">DevOps & CI/CD</Link></li>
-              <li><Link href="/services#transformation" className="body-text text-foreground hover:text-accent transition-colors link-hover">Transformación Digital</Link></li>
-              <li><Link href="/services#change-management" className="body-text text-foreground hover:text-accent transition-colors link-hover">Gestión del Cambio</Link></li>
-              <li><Link href="/services#cloud" className="body-text text-foreground hover:text-accent transition-colors link-hover">Arquitectura Cloud</Link></li>
             </ul>
           </div>
           
@@ -120,7 +110,7 @@ export default function Footer() {
           <p className="caption-text text-muted">
             © {new Date().getFullYear()} Mauricio Garay. Todos los derechos reservados.
           </p>
-          <div className="flex justify-center space-x-6 mt-2">
+          <div className="flex flex-wrap justify-center space-x-6 mt-2">
             <Link href="/privacy" className="caption-text text-muted hover:text-accent transition-colors">
               Política de Privacidad
             </Link>
