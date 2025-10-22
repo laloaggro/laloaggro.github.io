@@ -1,168 +1,201 @@
 import Link from 'next/link';
+import { FiAward, FiBook, FiBriefcase, FiUser } from 'react-icons/fi';
 
 export default function About() {
+  const skills = [
+    { name: 'DevOps', level: 95 },
+    { name: 'Cloud Architecture', level: 90 },
+    { name: 'Change Management', level: 92 },
+    { name: 'Digital Transformation', level: 88 },
+    { name: 'Team Leadership', level: 94 },
+    { name: 'Process Optimization', level: 89 }
+  ];
+
+  const experience = [
+    {
+      title: 'Consultor Senior en Transformación Digital',
+      company: 'Freelance',
+      period: '2020 - Presente',
+      description: 'Ayudo a organizaciones financieras a modernizar sus procesos tecnológicos y culturales.'
+    },
+    {
+      title: 'Gerente de DevOps',
+      company: 'Banco Regional',
+      period: '2018 - 2020',
+      description: 'Lideré la implementación de prácticas DevOps que redujeron tiempos de despliegue en un 85%.'
+    },
+    {
+      title: 'Ingeniero de Sistemas Senior',
+      company: 'Tech Solutions',
+      period: '2015 - 2018',
+      description: 'Desarrollé e implementé soluciones cloud-native para clientes en múltiples industrias.'
+    }
+  ];
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="pt-32 pb-20 consulting-section">
+      <section className="consulting-section sparse bg-gradient-to-br from-white via-blue-50 to-indigo-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
         <div className="consulting-container">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-medium mb-6">Sobre mí</h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Especialista en DevOps, Gestión del Cambio y Transformación Digital con más de 15 años 
-              de experiencia en entornos financieros altamente regulados.
-            </p>
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+              <div className="md:col-span-2">
+                <h1 className="display-hero text-4xl md:text-5xl lg:text-6xl mb-6">Sobre mí</h1>
+                <p className="body-text text-xl text-muted mb-6">
+                  Soy un apasionado especialista en DevOps, Gestión del Cambio y Transformación Digital 
+                  con más de 15 años de experiencia en el sector tecnológico.
+                </p>
+                <p className="body-text text-muted mb-8">
+                  Mi enfoque combina conocimientos técnicos avanzados con una comprensión profunda 
+                  de las dinámicas organizacionales, permitiéndome liderar transformaciones exitosas 
+                  en entornos altamente regulados.
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <Link href="/contact" className="consulting-button-primary consulting-button-large">
+                    Contáctame
+                  </Link>
+                  <Link href="/portfolio" className="consulting-button-secondary consulting-button-large">
+                    Ver Proyectos
+                  </Link>
+                </div>
+              </div>
+              <div className="flex justify-center">
+                <div className="relative">
+                  <div className="w-48 h-48 bg-gradient-to-br from-accent to-blue-800 rounded-full flex items-center justify-center">
+                    <FiUser className="w-24 h-24 text-white" />
+                  </div>
+                  <div className="absolute -bottom-2 -right-2 w-16 h-16 bg-success rounded-full flex items-center justify-center">
+                    <FiAward className="w-8 h-8 text-white" />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* About Content */}
-      <section className="py-16 bg-gray-50">
+      {/* Skills */}
+      <section className="consulting-section bg-white dark:bg-gray-900">
         <div className="consulting-container">
-          <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-              <div className="lg:col-span-2">
-                <div className="consulting-card p-8">
-                  <h2 className="text-2xl font-semibold mb-6">Mi Trayectoria</h2>
-                  <div className="space-y-6 text-gray-600">
-                    <p>
-                      Soy un profesional autodidacta con más de 15 años de experiencia en el sector tecnológico, 
-                      especializado en DevOps, Gestión del Cambio y Transformación Digital. A lo largo de mi carrera, 
-                      he trabajado con organizaciones financieras y altamente reguladas, ayudándolas a modernizar 
-                      sus procesos tecnológicos y adaptarse a los desafíos del entorno digital actual.
-                    </p>
-                    <p>
-                      Mi enfoque combina conocimientos técnicos avanzados con una comprensión profunda de las 
-                      necesidades organizacionales. He liderado múltiples iniciativas de transformación digital 
-                      que han permitido a mis clientes mejorar su eficiencia operativa, reducir costos y aumentar 
-                      su capacidad de respuesta ante los cambios del mercado.
-                    </p>
-                    <p>
-                      Como defensor de las mejores prácticas en ingeniería de software y operaciones, he 
-                      implementado soluciones DevOps que han acelerado los ciclos de entrega de software, 
-                      mejorado la calidad del producto y fortalecido la colaboración entre equipos de 
-                      desarrollo y operaciones.
-                    </p>
-                  </div>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="heading-section text-3xl md:text-4xl mb-4">Habilidades</h2>
+            <p className="body-text text-lg text-muted max-w-2xl mx-auto">
+              Combinación única de habilidades técnicas y de gestión para impulsar la transformación digital.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {skills.map((skill, index) => (
+              <div key={index}>
+                <div className="flex justify-between mb-2">
+                  <span className="font-medium">{skill.name}</span>
+                  <span className="text-muted">{skill.level}%</span>
+                </div>
+                <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                  <div 
+                    className="h-full bg-gradient-to-r from-accent to-blue-800 rounded-full"
+                    style={{ width: `${skill.level}%` }}
+                  ></div>
                 </div>
               </div>
-              
-              <div>
-                <div className="consulting-card p-6 mb-8">
-                  <h3 className="text-xl font-semibold mb-4">Especialidades</h3>
-                  <ul className="space-y-3">
-                    <li className="flex items-start">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3"></div>
-                      <span className="text-gray-700">DevOps & CI/CD</span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3"></div>
-                      <span className="text-gray-700">Cloud Architecture</span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3"></div>
-                      <span className="text-gray-700">Change Management</span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3"></div>
-                      <span className="text-gray-700">Digital Transformation</span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3"></div>
-                      <span className="text-gray-700">Microservices</span>
-                    </li>
-                    <li className="flex items-start">
-                      <div className="w-2 h-2 bg-blue-600 rounded-full mt-2 mr-3"></div>
-                      <span className="text-gray-700">Observability</span>
-                    </li>
-                  </ul>
-                </div>
-                
-                <div className="consulting-card p-6">
-                  <h3 className="text-xl font-semibold mb-4">Certificaciones</h3>
-                  <ul className="space-y-3 text-gray-600">
-                    <li className="border-b border-gray-100 pb-3">AWS Certified Solutions Architect</li>
-                    <li className="border-b border-gray-100 pb-3">Certified Kubernetes Administrator</li>
-                    <li className="border-b border-gray-100 pb-3">ITIL Foundation</li>
-                    <li className="pb-3">Scrum Master Certified</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Experience */}
-      <section className="consulting-section">
+      <section className="consulting-section bg-gray-50 dark:bg-gray-800">
         <div className="consulting-container">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl font-medium text-center mb-16">Experiencia Profesional</h2>
-            
-            <div className="space-y-12">
-              {/* Experience Item 1 */}
-              <div className="consulting-card p-8">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
-                  <h3 className="text-xl font-semibold">Consultor Senior DevOps & Transformación Digital</h3>
-                  <span className="text-blue-600 font-medium mt-2 md:mt-0">2020 - Presente</span>
-                </div>
-                <p className="text-gray-600 mb-4">
-                  Lidero iniciativas de transformación digital y DevOps para clientes en el sector financiero.
-                </p>
-                <ul className="list-disc list-inside space-y-2 text-gray-600">
-                  <li>Diseño e implementación de pipelines CI/CD para entornos altamente regulados</li>
-                  <li>Modernización de arquitecturas legacy hacia soluciones cloud-native</li>
-                  <li>Implementación de prácticas de observabilidad y monitoreo avanzado</li>
-                  <li>Gestión del cambio en organizaciones con múltiples stakeholders</li>
-                </ul>
-              </div>
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="heading-section text-3xl md:text-4xl mb-4">Experiencia</h2>
+            <p className="body-text text-lg text-muted max-w-2xl mx-auto">
+              Trayectoria profesional en tecnología y transformación organizacional.
+            </p>
+          </div>
+          
+          <div className="max-w-3xl mx-auto">
+            <div className="relative">
+              {/* Timeline line */}
+              <div className="absolute left-4 top-0 bottom-0 w-0.5 bg-accent transform translate-x-1/2"></div>
               
-              {/* Experience Item 2 */}
-              <div className="consulting-card p-8">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
-                  <h3 className="text-xl font-semibold">Líder de Equipo DevOps</h3>
-                  <span className="text-blue-600 font-medium mt-2 md:mt-0">2016 - 2020</span>
-                </div>
-                <p className="text-gray-600 mb-4">
-                  Responsable del diseño e implementación de la estrategia DevOps para una organización financiera.
-                </p>
-                <ul className="list-disc list-inside space-y-2 text-gray-600">
-                  <li>Implementación de infraestructura como código (IaC) con Terraform</li>
-                  <li>Automatización de procesos de despliegue y configuración</li>
-                  <li>Creación de centros de excelencia DevOps</li>
-                  <li>Capacitación de equipos en prácticas DevOps y cultura de colaboración</li>
-                </ul>
-              </div>
-              
-              {/* Experience Item 3 */}
-              <div className="consulting-card p-8">
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
-                  <h3 className="text-xl font-semibold">Ingeniero de Software Senior</h3>
-                  <span className="text-blue-600 font-medium mt-2 md:mt-0">2010 - 2016</span>
-                </div>
-                <p className="text-gray-600 mb-4">
-                  Desarrollo de aplicaciones empresariales y sistemas distribuidos en entornos Java y .NET.
-                </p>
-                <ul className="list-disc list-inside space-y-2 text-gray-600">
-                  <li>Desarrollo de aplicaciones web y servicios backend</li>
-                  <li>Implementación de arquitecturas de microservicios</li>
-                  <li>Optimización de bases de datos y consultas complejas</li>
-                  <li>Colaboración con equipos de QA y operaciones</li>
-                </ul>
+              <div className="space-y-12">
+                {experience.map((job, index) => (
+                  <div key={index} className="relative pl-16">
+                    {/* Timeline dot */}
+                    <div className="absolute left-0 top-2 w-8 h-8 bg-accent rounded-full flex items-center justify-center">
+                      <FiBriefcase className="w-4 h-4 text-white" />
+                    </div>
+                    
+                    <div className="feature-card">
+                      <h3 className="text-xl font-semibold mb-1">{job.title}</h3>
+                      <div className="flex flex-wrap items-center gap-4 mb-3">
+                        <span className="font-medium text-accent">{job.company}</span>
+                        <span className="badge-secondary">{job.period}</span>
+                      </div>
+                      <p className="body-text text-muted">{job.description}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-blue-700 text-white">
+      {/* Education */}
+      <section className="consulting-section bg-white dark:bg-gray-900">
+        <div className="consulting-container">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="heading-section text-3xl md:text-4xl mb-4">Educación</h2>
+            <p className="body-text text-lg text-muted max-w-2xl mx-auto">
+              Formación continua en tecnologías emergentes y metodologías de gestión.
+            </p>
+          </div>
+          
+          <div className="max-w-3xl mx-auto">
+            <div className="feature-card">
+              <div className="flex items-start">
+                <div className="feature-icon-primary flex-shrink-0">
+                  <FiBook className="w-6 h-6 text-white" />
+                </div>
+                <div className="ml-4">
+                  <h3 className="text-xl font-semibold mb-1">Ingeniería en Informática</h3>
+                  <div className="flex flex-wrap items-center gap-4 mb-3">
+                    <span className="font-medium text-accent">Universidad Tecnológica</span>
+                    <span className="badge-secondary">2005 - 2010</span>
+                  </div>
+                  <p className="body-text text-muted">
+                    Especialización en sistemas distribuidos y arquitecturas escalables.
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+              {[
+                'Certified Kubernetes Administrator',
+                'AWS Solutions Architect',
+                'Professional Scrum Master',
+                'ITIL Foundation'
+              ].map((cert, index) => (
+                <div key={index} className="feature-card flex items-center">
+                  <div className="w-3 h-3 bg-success rounded-full mr-3"></div>
+                  <span>{cert}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 bg-gradient-to-r from-accent to-blue-800 text-white">
         <div className="consulting-container text-center">
-          <h2 className="text-3xl md:text-4xl font-medium mb-6">¿Interesado en trabajar conmigo?</h2>
-          <p className="text-blue-100 max-w-2xl mx-auto mb-8 text-lg">
-            Agenda una consulta gratuita de 30 minutos para discutir tus necesidades tecnológicas.
+          <h2 className="display-hero text-3xl md:text-4xl mb-6">¿Listo para comenzar?</h2>
+          <p className="body-text text-blue-100 max-w-2xl mx-auto mb-8 text-lg">
+            Agenda una consulta gratuita de 30 minutos para discutir tus desafíos tecnológicos.
           </p>
-          <Link href="/contact" className="consulting-button bg-white text-blue-700 hover:bg-gray-100 focus:ring-white">
+          <Link href="/contact" className="consulting-button bg-white text-accent hover:bg-gray-100 focus:ring-white consulting-button-large inline-block">
             Agenda tu Consulta
           </Link>
         </div>

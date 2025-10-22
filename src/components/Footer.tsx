@@ -5,6 +5,9 @@ export default function Footer() {
     { name: 'Sobre mí', href: '/about' },
     { name: 'Servicios', href: '/services' },
     { name: 'Portfolio', href: '/portfolio' },
+    { name: 'Blog', href: '/blog' },
+    { name: 'Recursos', href: '/resources' },
+    { name: 'Testimonios', href: '/testimonials' },
     { name: 'Contacto', href: '/contact' },
   ];
 
@@ -39,12 +42,12 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="border-t border-border py-16 px-4 bg-gray-50">
+    <footer className="border-t border-border py-16 px-4 bg-gradient-to-r from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
           <div className="md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-3 h-3 bg-accent rounded-full"></div>
+              <div className="w-3 h-3 bg-accent rounded-full animate-pulse"></div>
               <h3 className="text-xl font-semibold">MAURICIO GARAY</h3>
             </div>
             <p className="body-text text-muted max-w-md mb-4">
@@ -56,7 +59,7 @@ export default function Footer() {
             </p>
             <Link 
               href="/contact" 
-              className="consulting-button-primary text-sm"
+              className="consulting-button-primary text-sm transform transition-all duration-300 hover:-translate-y-0.5"
             >
               Agenda una Consulta
             </Link>
@@ -98,12 +101,12 @@ export default function Footer() {
             </ul>
             <div className="flex space-x-4 mt-6">
               {socialLinks.map((social) => (
-                <a 
+                <a
                   key={social.name}
-                  href={social.href} 
-                  target="_blank" 
+                  href={social.href}
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="text-muted hover:text-accent transition-colors"
+                  className="text-muted hover:text-accent transition-colors transform hover:-translate-y-1 duration-300"
                   aria-label={social.name}
                 >
                   {social.icon}
@@ -113,8 +116,18 @@ export default function Footer() {
           </div>
         </div>
         
-        <div className="border-t border-border mt-12 pt-8 text-center caption-text text-muted">
-          <p>© {new Date().getFullYear()} Mauricio Garay. Todos los derechos reservados.</p>
+        <div className="border-t border-border mt-12 pt-8 text-center">
+          <p className="caption-text text-muted">
+            © {new Date().getFullYear()} Mauricio Garay. Todos los derechos reservados.
+          </p>
+          <div className="flex justify-center space-x-6 mt-2">
+            <Link href="/privacy" className="caption-text text-muted hover:text-accent transition-colors">
+              Política de Privacidad
+            </Link>
+            <Link href="/terms" className="caption-text text-muted hover:text-accent transition-colors">
+              Términos de Servicio
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

@@ -1,46 +1,38 @@
-export interface Project {
-  id: string;
-  title: string;
-  description: string;
-  technologies: string[];
-  details: string[];
-  githubUrl?: string;
-  featured?: boolean;
-  year: number;
-  category: 'DevOps' | 'Microservices' | 'Cloud' | 'Change Management' | 'Open Source';
-}
-
-export const projects: Project[] = [
+export const projects = [
   {
-    id: "flores-victoria",
-    title: "Flores Victoria - E-commerce Platform",
-    description: "Plataforma de comercio electrónico nativa en la nube con arquitectura de microservicios",
-    technologies: ["Docker", "Kubernetes", "Microservices", "Prometheus", "Grafana", "MongoDB", "PostgreSQL", "RabbitMQ", "Redis"],
-    details: [
-      "Arquitecté e implementé una plataforma de e-commerce con más de 13 microservicios",
-      "Implementé stack completo de observabilidad con Prometheus, Grafana y ELK",
-      "Desarrollé CI/CD pipelines con GitHub Actions",
-      "Integré seguridad con JWT, TLS y gestión segura de secretos",
-      "Logré auto-escalado y alta disponibilidad en entorno Docker/Kubernetes"
-    ],
-    githubUrl: "https://github.com/laloaggro/Flores-Victoria-",
+    id: 'banco-digital',
+    title: 'Transformación Digital Bancaria',
+    description: 'Implementación de arquitectura cloud-native para banco regional, reduciendo costos operativos en un 40%.',
+    year: '2023',
+    technologies: ['AWS', 'Kubernetes', 'Terraform', 'Docker', 'CI/CD'],
     featured: true,
-    year: 2025,
-    category: "Microservices"
+    page: '/portfolio/banco-digital'
   },
   {
-    id: "change-management-system",
-    title: "Sistema de Gestión de Cambios Financieros",
-    description: "Lideré la gestión de cambios en entornos financieros regulados para 7 países",
-    technologies: ["JIRA", "ServiceNow", "ITIL", "CI/CD", "Audit Compliance", "Regulatory Standards"],
-    details: [
-      "Escalé la gobernanza de cambios en 7 países, gestionando más de 1.000 cambios anuales",
-      "Reduje conflictos de despliegue en un 70% con calendario maestro en JIRA",
-      "Automatizé el 50% de los procesos de cambio, reduciendo tiempos de aprobación de 2 días a 4 horas",
-      "Logré cumplimiento del 100% en auditorías (CMF, PCI-DSS, ISO 27001)"
-    ],
+    id: 'seguros-modernizacion',
+    title: 'Modernización de Plataforma de Seguros',
+    description: 'Migración de infraestructura legacy a microservicios con enfoque DevOps, mejorando tiempos de despliegue en un 85%.',
+    year: '2022',
+    technologies: ['Azure', 'Docker', 'Jenkins', 'React', 'Node.js'],
     featured: true,
-    year: 2024,
-    category: "Change Management"
+    page: '/portfolio/seguros-modernizacion'
+  },
+  {
+    id: 'retail-omnichannel',
+    title: 'Plataforma Omnichannel Retail',
+    description: 'Desarrollo de plataforma de comercio electrónico con integración de canales físicos y digitales.',
+    year: '2023',
+    technologies: ['GCP', 'Kubernetes', 'MongoDB', 'React', 'Next.js'],
+    featured: true,
+    page: '/portfolio/retail-omnichannel'
+  },
+  {
+    id: 'gobierno-digital',
+    title: 'Portal de Servicios Gubernamentales',
+    description: 'Implementación de portal digital para servicios ciudadanos con enfoque en accesibilidad y seguridad.',
+    year: '2021',
+    technologies: ['AWS', 'Docker', 'PostgreSQL', 'Vue.js', 'Python'],
+    featured: false,
+    page: '/portfolio/gobierno-digital'
   }
 ];
