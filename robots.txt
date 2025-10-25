@@ -1,0 +1,12 @@
+# robots.txt para laloaggro.github.io
+User-agent: *
+Allow: /
+
+# Bloquear archivos innecesarios para crawlers
+Disallow: /server/
+Disallow: /node_modules/
+Disallow: /*.json$
+Disallow: /*.backup$
+
+# Sitemap
+Sitemap: https://laloaggro.github.io/sitemap.xml

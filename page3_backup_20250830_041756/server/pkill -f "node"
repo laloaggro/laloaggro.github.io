@@ -1,2 +1,0 @@
-pkill -f "node"
-pkill -f "http-server"

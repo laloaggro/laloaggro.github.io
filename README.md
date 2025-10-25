@@ -1,40 +1,119 @@
-# Programming History Terminal
+# Mauricio Garay Veas | Portfolio
 
-Un sitio web estilo terminal que muestra efemérides de programación importantes. Cada día se muestra un hecho histórico relevante en el campo de la programación y la informática.
+Portfolio profesional de Mauricio Garay Veas - Desarrollador Full Stack especializado en JavaScript, Python y tecnologías web modernas.
 
-## Características
+## 🚀 Características
 
-- Interfaz minimalista estilo terminal
-- Comandos interactivos:
-  - `today` - Muestra el hecho del día
-  - `random` - Muestra un hecho aleatorio
-  - `help` - Muestra la ayuda
-  - `facts` - Lista todos los hechos disponibles
-  - `clear` - Limpia la pantalla
-- Base de datos con hechos históricos de programación
+- ✨ Diseño moderno y responsive con tema Black & Gold
+- 🎨 Animaciones fluidas y efectos visuales
+- 📁 Sección de proyectos destacados con filtros
+- 📝 Blog integrado para artículos y noticias
+- 🔍 SEO optimizado con meta tags completos
+- 📱 Progressive Web App (PWA)
+- 🌙 Modo oscuro/claro
+- ⚡ Carga dinámica de contenido
+- 📊 Timeline de experiencia profesional
+- 📞 Información de contacto completa
 
-## Cómo usar
+## 🛠️ Tecnologías
 
-Simplemente visita el sitio y automáticamente se mostrará el hecho del día. Puedes usar los comandos mencionados anteriormente escribiéndolos en el prompt del terminal.
+- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
+- **Backend**: Node.js, Express
+- **Estilos**: CSS personalizado con animaciones
+- **Herramientas**: GitHub Pages, PWA
 
-## Despliegue
+## 📦 Estructura del Proyecto
 
-Este sitio está diseñado para funcionar con GitHub Pages. Simplemente coloque el archivo [index.html](./index.html) en la raíz del repositorio y configure GitHub Pages para servir desde la rama principal.
+```
+.
+├── index.html          # Página principal
+├── components/         # Componentes reutilizables
+├── data/              
+│   └── portfolio.js   # Datos del portfolio (info personal, proyectos, blog)
+├── scripts/           
+│   ├── main.js        # Funcionalidad principal
+│   ├── projects.js    # Módulo de proyectos
+│   └── animations.js  # Animaciones
+├── styles/            
+│   ├── main.css       # Estilos principales (Black & Gold)
+│   └── animations.css # Animaciones CSS
+├── assets/            
+│   ├── projects/      # Imágenes de proyectos
+│   ├── blog/          # Imágenes del blog
+│   ├── icons/         # Iconos PWA
+│   └── tech/          # Logos de tecnologías
+├── server/            # Servidor Node.js (opcional)
+├── deploy.sh          # Script de despliegue
+└── optimize-local.sh  # Optimización local
+```
 
-## Contribuciones
+## 🚀 Instalación y Uso
 
-Si deseas agregar más hechos históricos, puedes hacerlo fácilmente editando el archivo [index.html](./index.html) y agregando entradas al array de `facts` en la sección de JavaScript.
+### Desarrollo Local
 
-### ¿Cómo contribuir?
+```bash
+# Instalar dependencias
+npm install
 
-1. Edita el archivo `index.html`.
-2. Busca la sección de JavaScript donde está el array `facts`.
-3. Agrega un nuevo objeto con la fecha, título y contenido del hecho histórico.
-4. Guarda los cambios y prueba localmente abriendo `index.html` en tu navegador.
-5. Haz un Pull Request con tu contribución.
+# Ejecutar servidor de desarrollo
+npm start
+```
 
-¡Gracias por ayudar a mejorar este proyecto!
+### Despliegue
 
-## Licencia
+```bash
+# Desplegar a GitHub Pages
+./deploy.sh
+```
+
+## 📝 Licencia
 
 Este proyecto se distribuye bajo la licencia MIT. Consulta el archivo [LICENSE](./LICENSE) para más detalles.
+
+## 📧 Contacto
+
+- 📧 Email: laloaggro@gmail.com | mauriciogarayveas@gmail.com
+- 📞 Teléfono: +56 9 6360 3177
+- 📍 Ubicación: Santiago, Chile
+- 💼 GitHub: [@laloaggro](https://github.com/laloaggro)
+- 🌐 Portfolio: [laloaggro.github.io](https://laloaggro.github.io)
+
+## 📝 Gestión de Contenido
+
+### Actualizar Información Personal
+Edita `data/portfolio.js` para cambiar:
+- Información personal y contacto
+- Habilidades y niveles
+- Proyectos destacados
+- Experiencia profesional
+- Posts del blog
+
+### Completar Información del CV
+
+El portfolio incluye datos básicos. Para completar con tu experiencia real:
+
+1. **Experiencia Profesional** (`data/portfolio.js` - sección `experience`):
+   - Reemplaza los ejemplos con tus empleos reales
+   - Incluye: empresa, cargo, período, ubicación, logros
+   - Usa verbos de acción y métricas cuantificables
+
+2. **Educación** (`data/portfolio.js` - sección `education`):
+   - Agrega tus títulos, certificaciones y cursos
+   - Incluye: institución, título, período, descripción
+
+3. **Proyectos** (`data/portfolio.js` - sección `projects`):
+   - Ya incluye **Flores Victoria** como proyecto destacado
+   - Agrega otros proyectos relevantes de tu portafolio
+   - Incluye capturas de pantalla en `assets/projects/`
+
+4. **Blog** (`data/portfolio.js` - sección `blog`):
+   - Incluye post sobre Flores Victoria
+   - Agrega tus artículos técnicos o noticias profesionales
+   - Consulta `assets/BLOG_GUIDE.md` para formato completo
+
+### Agregar Posts al Blog
+Consulta la guía completa en `assets/BLOG_GUIDE.md` para:
+- Crear nuevos posts
+- Gestionar imágenes
+- Optimizar contenido
+- Publicar actualizaciones

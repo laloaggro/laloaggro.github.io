@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Generador OG Image - MGV Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #0B0B0B;
+            color: #F5F5F5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        canvas {
+            border: 2px solid #D4AF37;
+            border-radius: 10px;
+            margin: 20px 0;
+            max-width: 100%;
+        }
+        button {
+            background: linear-gradient(135deg, #B68C1B 0%, #D4AF37 50%, #E6C76E 100%);
+            color: #111;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .instructions {
+            background: #1A1A1A;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 800px;
+            border-left: 4px solid #D4AF37;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🖼️ Generador Open Graph Image</h1>
+    
+    <div class="instructions">
+        <h2>📋 Instrucciones:</h2>
+        <ol>
+            <li>Haz clic en "Generar OG Image"</li>
+            <li>La imagen se generará en formato 1200x630 (estándar Open Graph)</li>
+            <li>Haz clic derecho en la imagen y "Guardar como..."</li>
+            <li>Guárdala como <code>assets/og-image.jpg</code></li>
+        </ol>
+        <p><strong>Contenido:</strong> Nombre, título profesional y especialidades sobre fondo elegante.</p>
+        <p><strong>Nota:</strong> Para una imagen más profesional, considera usar Canva o Figma con tu foto real.</p>
+    </div>
+
+    <button onclick="generateOGImage()">🚀 Generar OG Image (1200x630)</button>
+    <button id="downloadBtn" onclick="downloadImage()" style="display:none;">💾 Descargar og-image.jpg</button>
+
+    <canvas id="ogCanvas" width="1200" height="630"></canvas>
+
+    <script>
+        function generateOGImage() {
+            const canvas = document.getElementById('ogCanvas');
+            const ctx = canvas.getContext('2d');
+
+            // Fondo con gradiente
+            const gradient = ctx.createLinearGradient(0, 0, 1200, 630);
+            gradient.addColorStop(0, '#0B0B0B');
+            gradient.addColorStop(0.5, '#1A1A1A');
+            gradient.addColorStop(1, '#0B0B0B');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 1200, 630);
+
+            // Patrón de puntos decorativo
+            ctx.fillStyle = 'rgba(212, 175, 55, 0.05)';
+            for (let i = 0; i < 50; i++) {
+                const x = Math.random() * 1200;
+                const y = Math.random() * 630;
+                const size = Math.random() * 3 + 1;
+                ctx.beginPath();
+                ctx.arc(x, y, size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            // Borde dorado
+            const borderGradient = ctx.createLinearGradient(0, 0, 1200, 630);
+            borderGradient.addColorStop(0, '#E6C76E');
+            borderGradient.addColorStop(0.5, '#D4AF37');
+            borderGradient.addColorStop(1, '#B68C1B');
+            ctx.strokeStyle = borderGradient;
+            ctx.lineWidth = 8;
+            ctx.strokeRect(20, 20, 1160, 590);
+
+            // Logo/Iniciales MGV
+            ctx.fillStyle = borderGradient;
+            ctx.font = 'bold 120px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('MGV', 600, 180);
+
+            // Línea decorativa
+            ctx.strokeStyle = borderGradient;
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(300, 220);
+            ctx.lineTo(900, 220);
+            ctx.stroke();
+
+            // Nombre
+            ctx.fillStyle = '#F5F5F5';
+            ctx.font = 'bold 56px Arial';
+            ctx.fillText('Mauricio Eduardo Garay Veas', 600, 310);
+
+            // Título profesional
+            const titleGradient = ctx.createLinearGradient(300, 0, 900, 0);
+            titleGradient.addColorStop(0, '#E6C76E');
+            titleGradient.addColorStop(0.5, '#D4AF37');
+            titleGradient.addColorStop(1, '#E6C76E');
+            ctx.fillStyle = titleGradient;
+            ctx.font = 'bold 42px Arial';
+            ctx.fillText('DevOps Lead & Full Stack Developer', 600, 380);
+
+            // Especialidades
+            ctx.fillStyle = '#CFCFCF';
+            ctx.font = '32px Arial';
+            ctx.fillText('Change Management | SRE | Microservices | Cloud-Native', 600, 440);
+
+            // Experiencia
+            ctx.fillStyle = '#D4AF37';
+            ctx.font = 'bold 36px Arial';
+            ctx.fillText('12+ años en Infraestructura Crítica Financiera', 600, 500);
+
+            // Footer
+            ctx.fillStyle = '#A8A8A8';
+            ctx.font = '24px Arial';
+            ctx.fillText('🌐 laloaggro.github.io', 600, 570);
+
+            // Mostrar botón de descarga
+            document.getElementById('downloadBtn').style.display = 'inline-block';
+        }
+
+        function downloadImage() {
+            const canvas = document.getElementById('ogCanvas');
+            canvas.toBlob(blob => {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'og-image.jpg';
+                a.click();
+            }, 'image/jpeg', 0.95);
+        }
+    </script>
+</body>
+</html>
