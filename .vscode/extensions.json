@@ -1,0 +1,19 @@
+{
+  "recommendations": [
+    "ms-vscode.vscode-typescript-next",
+    "bradlc.vscode-tailwindcss",
+    "esbenp.prettier-vscode",
+    "ms-vscode.vscode-json",
+    "redhat.vscode-yaml",
+    "ms-vscode.vscode-markdown",
+    "humao.rest-client",
+    "ms-vscode.vscode-web-playground",
+    "github.vscode-pull-request-github",
+    "ms-vscode.vscode-github",
+    "ms-vscode.vscode-github-issues-prs"
+  ],
+  "unwantedRecommendations": [
+    "ms-vscode.vscode-gulp",
+    "ms-vscode.vscode-npm"
+  ]
+}

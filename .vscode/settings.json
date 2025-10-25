@@ -1,0 +1,33 @@
+{
+  "editor.formatOnSave": true,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.next": true,
+    "**/node_modules": true,
+    "**/*.log": true
+  },
+  "search.exclude": {
+    "**/.next": true,
+    "**/node_modules": true,
+    "**/*.log": true
+  },
+  // Notion integration settings
+  "rest-client.environmentVariables": {
+    "$shared": {
+      "notionApiUrl": "https://api.notion.com/v1",
+      "notionVersion": "2022-06-28"
+    }
+  },
+  // Markdown settings for Notion-like editing experience
+  "markdown.preview.fontSize": 16,
+  "markdown.preview.lineHeight": 1.6,
+  "markdown.preview.typographer": true,
+  "[markdown]": {
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": {
+      "comments": "off",
+      "strings": "on",
+      "other": "on"
+    }
+  }
+}

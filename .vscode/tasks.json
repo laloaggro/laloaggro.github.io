@@ -1,0 +1,50 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Export project structure for Notion",
+      "type": "shell",
+      "command": "find . -type f -not -path \"./node_modules/*\" -not -path \"./.next/*\" -not -path \"./.git/*\" | sed 's/[^/]*//g' | sort | uniq -c | sort -nr",
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "Export TODOs for Notion",
+      "type": "shell",
+      "command": "grep -r 'TODO\\|FIXME\\|NOTE' --exclude-dir=node_modules --exclude-dir=.next --exclude-dir=.git .",
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "Export documentation for Notion",
+      "type": "shell",
+      "command": "find . -name '*.md' -not -path './node_modules/*' -not -path './.next/*' -not -path './.git/*'",
+      "group": "build",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    }
+  ]
+}
