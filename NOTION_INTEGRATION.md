@@ -26,6 +26,14 @@ The `.vscode/tasks.json` file includes several tasks that can help export data t
 2. **Export TODOs for Notion** - Extracts all TODO, FIXME, and NOTE comments from the codebase
 3. **Export documentation for Notion** - Lists all Markdown files that can be synced with Notion
 
+## New Export Files for Notion Import
+
+We've created additional export files that can be imported directly into Notion as databases:
+
+1. **Project Information** (`notion-export/project-info.csv`) - Contains details about the website and projects
+2. **Tasks and Roadmap** (`notion-export/tasks.csv`) - Lists current tasks, priorities, and status
+3. **Project Structure** (`notion-export/project-structure.txt`) - Shows the complete file structure
+
 ## Using the REST Client with Notion API
 
 To use the Notion API with the REST Client extension:
@@ -51,9 +59,21 @@ You can use the export tasks to generate documentation that can be manually copi
 2. Review and update your Notion pages with the latest documentation
 3. Use the `Export TODOs for Notion` task to track technical debt in Notion
 
-## Best Practices
+## Creating a Project Dashboard in Notion
 
-1. Keep your Notion documentation in sync with your codebase
-2. Use consistent naming conventions between VSCode and Notion
-3. Regularly export TODOs and technical debt to Notion for tracking
-4. Use the REST Client extension to test Notion API integrations
+To create a comprehensive project dashboard in Notion:
+
+1. Import the CSV files into Notion as databases:
+   - Create a new database for "Projects" and import `notion-export/project-info.csv`
+   - Create a new database for "Tasks" and import `notion-export/tasks.csv`
+
+2. Link the databases together using relations:
+   - Create a relation between Tasks and Projects
+   - Use rollups to calculate progress and statistics
+
+3. Create views for different perspectives:
+   - Kanban board for task management
+   - Gallery view for projects
+   - Calendar view for deadlines
+
+4. Add the project structure as a code block in a Notion page for reference

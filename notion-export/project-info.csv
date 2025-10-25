@@ -1,0 +1,10 @@
+Name,Type,Description,Status,URL,Technologies
+"Sitio Web Profesional","Website","Sitio web personal construido con Next.js","Active","https://laloaggro.github.io","Next.js 16, React 19, TypeScript, Tailwind CSS"
+"Blog Técnico","Content","Artículos sobre DevOps, arquitectura y tecnología","In Progress","","React, Markdown"
+"Portafolio de Proyectos","Portfolio","Colección de proyectos realizados","Active","","React, Node.js, Docker"
+"Sistema de Gestión del Cambio","Project","Plataforma integral para gestionar transformaciones organizacionales","Completed","/portfolio/change-management-system","React, Node.js, MongoDB, Docker, Kubernetes"
+"E-commerce Flores Victoria","Project","Plataforma de comercio electrónico","Completed","/portfolio/flores-victoria","Next.js, PostgreSQL, Redis, Stripe, AWS"
+"Dashboard de Analítica Financiera","Project","Panel de control para análisis en tiempo real","Completed","","Vue.js, D3.js, Python, FastAPI, PostgreSQL"
+"Pipeline DevOps para Institución Financiera","Project","Implementación de pipeline CI/CD","Completed","","Jenkins, Docker, Kubernetes, Ansible, Terraform"
+"Migración a la Nube para Empresa de Seguros","Project","Migración de infraestructura legacy","Completed","","AWS, Terraform, Docker, Kubernetes"
+"Arquitectura de Microservicios para Retail","Project","Diseño e implementación de microservicios","Completed","","Node.js, Express, MongoDB, RabbitMQ"

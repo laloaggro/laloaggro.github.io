@@ -1,0 +1,65 @@
+laloaggro.github.io/
+├── .vscode/
+│   ├── extensions.json
+│   ├── settings.json
+│   └── tasks.json
+├── public/
+├── src/
+│   ├── app/
+│   │   ├── about/
+│   │   │   └── page.tsx
+│   │   ├── api/
+│   │   │   ├── exchange/
+│   │   │   │   └── route.ts
+│   │   │   ├── time/
+│   │   │   │   └── route.ts
+│   │   │   └── weather/
+│   │   │       └── route.ts
+│   │   ├── approach/
+│   │   │   └── page.tsx
+│   │   ├── blog/
+│   │   │   ├── devops-2025-complete-guide/
+│   │   │   │   └── page.tsx
+│   │   │   ├── devops-best-practices/
+│   │   │   │   └── page.tsx
+│   │   │   ├── web-accessibility-best-practices/
+│   │   │   │   └── page.tsx
+│   │   │   └── page.tsx
+│   │   ├── contact/
+│   │   │   └── page.tsx
+│   │   ├── dashboard/
+│   │   │   └── page.tsx
+│   │   ├── portfolio/
+│   │   │   ├── change-management-system/
+│   │   │   │   └── page.tsx
+│   │   │   ├── flores-victoria/
+│   │   │   │   └── page.tsx
+│   │   │   ├── [id]/
+│   │   │   │   └── page.tsx
+│   │   │   └── page.tsx
+│   │   ├── portfolio-profesional/
+│   │   │   └── page.tsx
+│   │   ├── resources/
+│   │   │   └── page.tsx
+│   │   ├── services/
+│   │   │   └── page.tsx
+│   │   ├── testimonials/
+│   │   │   └── page.tsx
+│   │   ├── favicon.ico
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── components/
+│   │   ├── BlogPreview.tsx
+│   │   ├── Footer.tsx
+│   │   └── Header.tsx
+│   └── data/
+│       └── projects.ts
+├── .gitignore
+├── next.config.ts
+├── package.json
+├── tailwind.config.js
+├── tsconfig.json
+├── PROJECT_CONFIG.json
+├── NOTION_INTEGRATION.md
+└── NOTION_SITE_DOCUMENT.md

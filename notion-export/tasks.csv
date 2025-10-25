@@ -1,0 +1,8 @@
+Task,Priority,Status,Description,Assigned To,Due Date,Tags
+"Optimización de SEO","High","In Progress","Implementar meta etiquetas personalizadas, sitemap.xml y robots.txt","Mauricio Garay","","SEO, Optimization"
+"Mejoras de Accesibilidad","Medium","To Do","Añadir más atributos ARIA y mejorar navegación por teclado","Mauricio Garay","","Accessibility, UX"
+"Ampliar el Portafolio","Medium","In Progress","Crear páginas individuales para cada proyecto","Mauricio Garay","","Portfolio, Content"
+"Desarrollar el Blog","High","In Progress","Escribir artículos completos sobre temas técnicos","Mauricio Garay","","Content, Blog"
+"Integración con Notion","Medium","In Progress","Configurar sincronización automática con Notion","Mauricio Garay","","Automation, Notion"
+"Crear página de recursos","Low","To Do","Desarrollar sección de recursos y herramientas","Mauricio Garay","","Content"
+"Implementar buscador","Medium","To Do","Agregar funcionalidad de búsqueda en el sitio","Mauricio Garay","","Feature"
