@@ -1,6 +1,6 @@
 {
   "projectName": "laloaggro.github.io",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Sitio web profesional personal construido con Next.js",
   "author": "Mauricio Garay",
   "technologies": {
@@ -24,8 +24,8 @@
   },
   "components": {
     "BlogPreview": "/src/components/BlogPreview.tsx",
-    "Header": "Por implementar",
-    "Footer": "Por implementar",
+    "Header": "/src/components/Header.tsx",
+    "Footer": "/src/components/Footer.tsx",
     "ProjectCard": "Por implementar"
   },
   "data": {
@@ -37,11 +37,12 @@
     "weather": "/src/app/api/weather"
   },
   "features": {
-    "darkMode": "Pendiente",
+    "darkMode": "Implementado",
     "seoOptimization": "En progreso",
     "accessibility": "En progreso",
     "blog": "Implementado",
-    "portfolio": "Implementado"
+    "portfolio": "Implementado",
+    "contactForm": "Implementado"
   },
   "deployment": {
     "platform": "GitHub Pages",
